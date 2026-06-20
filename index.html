@@ -123,20 +123,20 @@
             flex-shrink: 0;
         }
 
-        /* --- CONTRA: ЗЕЛЕНОЕ СВЕЧЕНИЕ (БЕЗ ПОЛНОЙ ЗАЛИВКИ) --- */
+               /* --- CONTRA: ЗЕЛЕНАЯ С ЗОЛОТЫМ ОБВОДОК ПРИ НАВЕДЕНИИ --- */
         .contra-link {
-            border-color: var(--accent-green);
+            border-color: var(--accent-green); /* Зеленая рамка в покое */
             color: var(--accent-green);
             background: rgba(5, 150, 105, 0.05);
         }
         
         .contra-link:hover {
-            background-color: var(--accent-green); /* Зеленый фон */
+            background-color: var(--accent-green); /* Зеленый фон при наведении */
             color: #02040a;                        /* Темный текст */
-            box-shadow: 0 0 20px rgba(5, 150, 105, 0.4); /* Зеленое свечение */
-            border-color: var(--accent-green);
+            border-color: var(--text-gold) !important; /* !!! ЗОЛОТАЯ РАМКА !!! */
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.5), inset 0 0 10px rgba(251, 191, 36, 0.2); /* !!! ЗОЛОТОЕ СВЕЧЕНИЕ !!! */
         }
-        
+    
         .lang-switch {
             margin-bottom: 40px; display: inline-flex; background: rgba(251, 191, 36, 0.05);
             padding: 5px; border-radius: 50px; border: 1px solid rgba(251, 191, 36, 0.1);
