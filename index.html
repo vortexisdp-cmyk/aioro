@@ -117,6 +117,17 @@
 
         @media (max-width: 768px) { .process-steps { grid-template-columns: 1fr 1fr; } }
         @media (max-width: 480px) { .process-steps { grid-template-columns: 1fr; } .services { grid-template-columns: 1fr; } }
+
+                .centered-service {
+            grid-column: 1 / -1; /* Растягиваем на все колонки сетки */
+            max-width: 500px;    /* Ограничиваем ширину, чтобы не была слишком широкой */
+            margin: 0 auto;      /* Центрируем внутри растянутой ячейки */
+            text-align: center;  /* Центрируем текст внутри карточки */
+        }
+        
+        .centered-service .service-title {
+            justify-content: center; /* Центрируем заголовок с иконкой */
+        }
     </style>
 </head>
 <body>
