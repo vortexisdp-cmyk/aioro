@@ -224,6 +224,16 @@
             h1 { font-size: 2rem; }
             .services { grid-template-columns: 1fr; }
         }
+        .contra-link {
+            border: 1px solid var(--accent-green); /* Зеленая рамка как на Contra */
+            color: var(--accent-green);
+        }
+        
+        .contra-link:hover {
+            background-color: var(--accent-green);
+            color: #0f172a; /* Темный текст при наведении */
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -318,6 +328,11 @@
         <a href="mailto:aimaseux@gmail.com" class="link-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             Email
+                    <a href="https://contra.com/swgtjma_lcli1kx4?referralExperimentNid=DEFAULT_REFERRAL_PROGRAM&referrerUsername=swgtjma_lcli1kx4" class="link-item contra-link" target="_blank">
+            <!-- Иконка портфеля/кейсов -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7v10l4 2 4-2 4 2 4-2 4 2V7l-4-2-4 2-4-2-4 2z"></path><path d="M6 7l4-2 4 2 4-2"></path></svg>
+            Мои кейсы & Contra
+        </a>
         </a>
     </div>
 </div>
