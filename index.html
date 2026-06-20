@@ -94,7 +94,8 @@
             border: 1px solid rgba(251, 191, 36, 0.1);
         }
         
-                .link-item {
+                      /* --- ОБЩИЕ СТИЛИ ДЛЯ ВСЕХ КНОПОК --- */
+        .link-item {
             color: var(--text-gold);
             text-decoration: none;
             font-weight: 500;
@@ -110,13 +111,13 @@
             white-space: nowrap;
         }
 
-        /* ИСПРАВЛЕННАЯ ПОДСВЕТКА */
+        /* --- ЭФФЕКТ ПОЛНОГО ЗАПОЛНЕНИЯ ЗОЛОТОМ (КАК БЫЛО) --- */
         .link-item:hover {
-            color: var(--text-gold-light); /* Яркий золотой текст */
-            background: rgba(251, 191, 36, 0.1); /* Чуть более светлый фон */
+            color: #fff !important;           /* Белый текст */
+            background: var(--text-gold) !important; /* Полностью золотой фон */
             transform: translateY(-2px);
-            border-color: var(--text-gold); /* Золотая рамка */
-            box-shadow: 0 0 15px rgba(251, 191, 36, 0.4), inset 0 0 10px rgba(251, 191, 36, 0.1); /* Внешнее и внутреннее свечение */
+            border-color: var(--text-gold);
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4); /* Мягкая тень */
         }
 
         .link-item svg {
@@ -125,8 +126,8 @@
             height: 20px;
             flex-shrink: 0;
         }
-        }
 
+        /* --- CONTRA: ЗЕЛЕНОЕ СВЕЧЕНИЕ (БЕЗ ПОЛНОЙ ЗАЛИВКИ) --- */
         .contra-link {
             border-color: var(--accent-green);
             color: var(--accent-green);
@@ -134,11 +135,12 @@
         }
         
         .contra-link:hover {
-            background-color: var(--accent-green);
-            color: #02040a;
-            box-shadow: 0 0 20px rgba(5, 150, 105, 0.4);
-       }
-       
+            background-color: var(--accent-green); /* Зеленый фон */
+            color: #02040a;                        /* Темный текст */
+            box-shadow: 0 0 20px rgba(5, 150, 105, 0.4); /* Зеленое свечение */
+            border-color: var(--accent-green);
+        }
+        
         .lang-switch {
             margin-bottom: 40px; display: inline-flex; background: rgba(251, 191, 36, 0.05);
             padding: 5px; border-radius: 50px; border: 1px solid rgba(251, 191, 36, 0.1);
