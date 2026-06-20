@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk"> <!-- ВАЖНО: Ставим uk, так как контент по умолчанию украинский -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +11,7 @@
     <meta property="og:type" content="website">
     
     <style>
+        /* ... ТВОИ СТИЛИ ОСТАЮТСЯ БЕЗ ИЗМЕНЕНИЙ ... */
         :root {
             --bg-color: #02040a;
             --card-bg: rgba(10, 15, 30, 0.8);
@@ -33,263 +34,88 @@
             min-height: 100vh;
         }
 
-        .container {
-            max-width: 850px;
-            margin: 0 auto;
-            text-align: center;
-            padding-bottom: 40px;
-        }
-
-        /* --- СТИЛИ ДЛЯ ОБЛОЖКИ --- */
+        .container { max-width: 850px; margin: 0 auto; text-align: center; padding-bottom: 40px; }
+        
         header { margin-bottom: 60px; position: relative; }
         
         .hero-image-container {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto 30px auto;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(251, 191, 36, 0.1);
-            border: 1px solid rgba(251, 191, 36, 0.2);
-            background-color: var(--bg-color);
+            position: relative; width: 100%; max-width: 900px; margin: 0 auto 30px auto;
+            border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.2); background-color: var(--bg-color);
         }
+        .hero-image { width: 100%; height: auto; display: block; object-fit: contain; }
 
-        .hero-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: contain;
-        }
-
-        /* --- СЕРВИСЫ --- */
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-bottom: 60px;
-            text-align: left;
-        }
-
+        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 60px; text-align: left; }
         .service-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 30px;
-            border-radius: 16px;
-            border: 1px solid rgba(251, 191, 36, 0.15);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
+            background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            padding: 30px; border-radius: 16px; border: 1px solid rgba(251, 191, 36, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; overflow: hidden;
         }
-
         .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
-            opacity: 0;
-            transition: opacity 0.3s;
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green)); opacity: 0; transition: opacity 0.3s;
         }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px var(--glow);
-            border-color: var(--text-gold);
-        }
-
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px var(--glow); border-color: var(--text-gold); }
         .service-card:hover::before { opacity: 1; }
-
-        .service-title {
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-            color: var(--text-gold-light);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
+        .service-title { font-weight: 700; font-size: 1.25rem; margin-bottom: 12px; color: var(--text-gold-light); display: flex; align-items: center; gap: 10px; }
         .service-card p { color: var(--text-gold-dim); }
 
-        /* --- КАК МЫ РАБОТАЕМ (НОВЫЕ СТИЛИ) --- */
-        .process-section {
-            margin-bottom: 60px;
-            text-align: center;
-        }
-
-        .process-section h2 {
-            color: var(--text-gold-light);
-            margin-bottom: 40px;
-            font-size: 2rem;
-        }
-
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
+        .process-section { margin-bottom: 60px; text-align: center; }
+        .process-section h2 { color: var(--text-gold-light); margin-bottom: 40px; font-size: 2rem; }
+        .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
         .process-step {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 30px 20px;
-            border-radius: 16px;
-            border: 1px solid rgba(251, 191, 36, 0.15);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
+            background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            padding: 30px 20px; border-radius: 16px; border: 1px solid rgba(251, 191, 36, 0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative;
         }
+        .process-step:hover { transform: translateY(-5px); border-color: var(--text-gold); box-shadow: 0 10px 30px rgba(251, 191, 36, 0.1); }
+        .step-number { font-size: 2.5rem; font-weight: 800; color: rgba(251, 191, 36, 0.15); margin-bottom: 10px; line-height: 1; }
+        .process-step h3 { color: var(--text-gold-light); font-size: 1.1rem; margin-bottom: 10px; }
+        .process-step p { color: var(--text-gold-dim); font-size: 0.95rem; line-height: 1.5; }
 
-        .process-step:hover {
-            transform: translateY(-5px);
-            border-color: var(--text-gold);
-            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.1);
-        }
-
-        .step-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: rgba(251, 191, 36, 0.15);
-            margin-bottom: 10px;
-            line-height: 1;
-        }
-
-        .process-step h3 {
-            color: var(--text-gold-light);
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-
-        .process-step p {
-            color: var(--text-gold-dim);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* --- CTA SECTION --- */
         .cta-section {
-            background-color: var(--bg-color);
-            padding: 40px;
-            border-radius: 20px;
-            margin-bottom: 50px;
-            border: 1px solid rgba(251, 191, 36, 0.2);
-            box-shadow: 0 0 30px rgba(251, 191, 36, 0.05);
-            position: relative;
-            overflow: hidden;
+            background-color: var(--bg-color); padding: 40px; border-radius: 20px; margin-bottom: 50px;
+            border: 1px solid rgba(251, 191, 36, 0.2); box-shadow: 0 0 30px rgba(251, 191, 36, 0.05);
+            position: relative; overflow: hidden;
         }
-
         .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
-            color: white;
-            padding: 14px 35px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            margin-top: 25px;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-            letter-spacing: 0.5px;
+            display: inline-block; background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            color: white; padding: 14px 35px; text-decoration: none; border-radius: 50px; font-weight: 600;
+            margin-top: 25px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); letter-spacing: 0.5px;
         }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 6px 25px rgba(16, 185, 129, 0.4); }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 25px rgba(16, 185, 129, 0.4);
-        }
-
-        /* --- LINKS & CONTRA --- */
-        .links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 40px;
-        }
-
+        .links { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 40px; }
         .link-item {
-            color: var(--text-gold);
-            text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s;
-            padding: 10px 20px;
-            border-radius: 12px;
-            background: rgba(251, 191, 36, 0.05);
+            color: var(--text-gold); text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 8px;
+            transition: all 0.3s; padding: 10px 20px; border-radius: 12px; background: rgba(251, 191, 36, 0.05);
             border: 1px solid rgba(251, 191, 36, 0.1);
         }
-
-        .link-item:hover {
-            color: #fff;
-            background: var(--text-gold);
-            transform: translateY(-2px);
-            border-color: var(--text-gold);
-            box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
-        }
-        
+        .link-item:hover { color: #fff; background: var(--text-gold); transform: translateY(-2px); border-color: var(--text-gold); box-shadow: 0 0 15px rgba(251, 191, 36, 0.4); }
         .link-item svg { stroke: currentColor; }
+        .contra-link { border-color: var(--accent-green); color: var(--accent-green); background: rgba(5, 150, 105, 0.05); }
+        .contra-link:hover { background-color: var(--accent-green); color: #02040a; box-shadow: 0 0 20px rgba(5, 150, 105, 0.4); }
 
-        .contra-link {
-            border-color: var(--accent-green);
-            color: var(--accent-green);
-            background: rgba(5, 150, 105, 0.05);
-        }
-        
-        .contra-link:hover {
-            background-color: var(--accent-green);
-            color: #02040a;
-            box-shadow: 0 0 20px rgba(5, 150, 105, 0.4);
-        }
-
-        /* --- LANG SWITCH --- */
         .lang-switch {
-            margin-bottom: 40px;
-            display: inline-flex;
-            background: rgba(251, 191, 36, 0.05);
-            padding: 5px;
-            border-radius: 50px;
-            border: 1px solid rgba(251, 191, 36, 0.1);
+            margin-bottom: 40px; display: inline-flex; background: rgba(251, 191, 36, 0.05);
+            padding: 5px; border-radius: 50px; border: 1px solid rgba(251, 191, 36, 0.1);
         }
-        
         .lang-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--text-gold-dim);
-            padding: 8px 16px;
-            border-radius: 50px;
-            transition: all 0.3s;
-            font-size: 0.9rem;
+            background: none; border: none; cursor: pointer; color: var(--text-gold-dim);
+            padding: 8px 16px; border-radius: 50px; transition: all 0.3s; font-size: 0.9rem;
         }
-
         .lang-btn:hover { color: var(--text-gold-light); }
-
-        .lang-btn.active {
-            color: var(--bg-color);
-            background-color: var(--text-gold);
-            font-weight: 700;
-            box-shadow: 0 2px 10px rgba(251, 191, 36, 0.3);
-        }
+        .lang-btn.active { color: var(--bg-color); background-color: var(--text-gold); font-weight: 700; box-shadow: 0 2px 10px rgba(251, 191, 36, 0.3); }
 
         [data-lang] { display: none; }
         [data-lang].active { display: block; animation: fadeIn 0.6s ease-out; }
         .hidden { display: none !important; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        @media (max-width: 768px) {
-            .process-steps { grid-template-columns: 1fr 1fr; }
-        }
-        @media (max-width: 480px) {
-            .process-steps { grid-template-columns: 1fr; }
-            .services { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 768px) { .process-steps { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 480px) { .process-steps { grid-template-columns: 1fr; } .services { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -333,6 +159,13 @@
             <div data-lang="ru"><div class="service-title">3. Продающий Копирайтинг</div><p>Создание текстов, которые конвертируют. Редактура и адаптация стиля.</p></div>
             <div data-lang="pt"><div class="service-title">3. Copywriting Persuasivo</div><p>Criação de textos de alta conversão. Edição e adaptação de estilo.</p></div>
         </div>
+        <!-- НОВЫЙ БЛОК: САЙТЫ-ВИЗИТКИ -->
+        <div class="service-card">
+            <div data-lang="ua" class="active"><div class="service-title">🌐 Сайти-візитки & Лендінги</div><p>Швидка розробка стильних односторінкових сайтів під ваш проект або послугу.</p></div>
+            <div data-lang="en"><div class="service-title">🌐 Business Card Sites & Landing Pages</div><p>Fast development of stylish one-page websites for your project or service.</p></div>
+            <div data-lang="ru"><div class="service-title">🌐 Сайты-визитки & Лендинги</div><p>Быстрая разработка стильных одностраничных сайтов под ваш проект или услугу.</p></div>
+            <div data-lang="pt"><div class="service-title"> Sites Institucionais & Landing Pages</div><p>Desenvolvimento rápido de sites de página única elegantes para seu projeto ou serviço.</p></div>
+        </div>
         <div class="service-card">
             <div data-lang="ua" class="active"><div class="service-title">4. Управління Проектами</div><p>Організація виробничих процесів, контроль термінів та координація команд.</p></div>
             <div data-lang="en"><div class="service-title">4. Project Management</div><p>Production process organization, deadline control, and team coordination.</p></div>
@@ -341,29 +174,24 @@
         </div>
     </div>
 
-    <!-- БЛОК КАК МЫ РАБОТАЕМ -->
     <div class="process-section">
         <h2>Как мы работаем</h2>
         <div class="process-steps">
-            <!-- Шаг 1 -->
             <div class="process-step" data-lang="ua" class="active"><div class="step-number">01</div><h3>Брифінг / Аудит</h3><p>Безкоштовно обговорюємо задачу або робимо швидкий ресерч вашого цифрового сліду.</p></div>
             <div class="process-step" data-lang="en"><div class="step-number">01</div><h3>Briefing / Audit</h3><p>Free consultation to discuss your needs or a quick digital footprint research.</p></div>
             <div class="process-step" data-lang="ru"><div class="step-number">01</div><h3>Брифинг / Аудит</h3><p>Бесплатно обсуждаем задачу или делаем быстрый ресерч вашего цифрового следа.</p></div>
             <div class="process-step" data-lang="pt"><div class="step-number">01</div><h3>Briefing / Auditoria</h3><p>Consulta gratuita para discutir suas necessidades ou uma pesquisa rápida da sua pegada digital.</p></div>
 
-            <!-- Шаг 2 -->
             <div class="process-step" data-lang="ua" class="active"><div class="step-number">02</div><h3>Розробка рішення</h3><p>Налаштовую процеси, пишу код або створюю продающий контент під ваші цілі.</p></div>
             <div class="process-step" data-lang="en"><div class="step-number">02</div><h3>Solution Development</h3><p>Setting up workflows, writing code, or creating persuasive content tailored to your goals.</p></div>
             <div class="process-step" data-lang="ru"><div class="step-number">02</div><h3>Разработка решения</h3><p>Настраиваю процессы, пишу код или создаю продающий контент под ваши цели.</p></div>
             <div class="process-step" data-lang="pt"><div class="step-number">02</div><h3>Desenvolvimento da Solução</h3><p>Configurando fluxos de trabalho, escrevendo código ou criando conteúdo persuasivo sob medida.</p></div>
 
-            <!-- Шаг 3 -->
             <div class="process-step" data-lang="ua" class="active"><div class="step-number">03</div><h3>Тест та Запуск</h3><p>Перевіряємо, що все працює ідеально, і запускаємо систему в роботу.</p></div>
             <div class="process-step" data-lang="en"><div class="step-number">03</div><h3>Testing & Launch</h3><p>Verifying perfect functionality and launching the system into operation.</p></div>
             <div class="process-step" data-lang="ru"><div class="step-number">03</div><h3>Тест и Запуск</h3><p>Проверяем, что всё работает идеально, и запускаем систему в работу.</p></div>
             <div class="process-step" data-lang="pt"><div class="step-number">03</div><h3>Teste e Lançamento</h3><p>Verificando a funcionalidade perfeita e lançando o sistema em operação.</p></div>
 
-            <!-- Шаг 4 -->
             <div class="process-step" data-lang="ua" class="active"><div class="step-number">04</div><h3>Підтримка</h3><p>Передаю інструкції та залишаюся на зв'язку для оперативних питань.</p></div>
             <div class="process-step" data-lang="en"><div class="step-number">04</div><h3>Support</h3><p>Providing instructions and staying in touch for any operational questions.</p></div>
             <div class="process-step" data-lang="ru"><div class="step-number">04</div><h3>Поддержка</h3><p>Передаю инструкции и остаюсь на связи для оперативных вопросов.</p></div>
@@ -383,7 +211,7 @@
         <a href="https://wa.me/YOUR_NUMBER" class="link-item hidden">WhatsApp</a>
         <a href="mailto:aimaseux@gmail.com" class="link-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>Email</a>
         
-        <!-- ИСПРАВЛЕННАЯ CONTRA -->
+        <!-- ИСПРАВЛЕННАЯ CONTRA (ЕДИНАЯ ССЫЛКА) -->
         <a href="https://contra.com/swgtjma_lcli1kx4/work?r=swgtjma_lcli1kx4" class="link-item contra-link" data-lang="ua" class="active" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>Мої кейси & Contra</a>
         <a href="https://contra.com/swgtjma_lcli1kx4/work?r=swgtjma_lcli1kx4" class="link-item contra-link" data-lang="en" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>My Cases & Contra</a>
         <a href="https://contra.com/swgtjma_lcli1kx4/work?r=swgtjma_lcli1kx4" class="link-item contra-link" data-lang="ru" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>Мои кейсы & Contra</a>
@@ -395,10 +223,18 @@
     function setLang(lang) {
         document.querySelectorAll('[data-lang]').forEach(el => el.classList.remove('active'));
         document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => el.classList.add('active'));
+        
         document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+        const activeBtn = Array.from(document.querySelectorAll('.lang-btn')).find(b => b.textContent.trim().toLowerCase() === lang);
+        if (activeBtn) activeBtn.classList.add('active');
+        
         document.documentElement.lang = lang;
     }
+
+    // МГНОВЕННЫЙ ЗАПУСК УКРАИНСКОГО ПРИ ЗАГРУЗКЕ
+    document.addEventListener('DOMContentLoaded', () => {
+        setLang('ua'); 
+    });
 </script>
 
 </body>
