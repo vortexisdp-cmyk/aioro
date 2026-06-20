@@ -118,12 +118,16 @@
             overflow: hidden;
         }
 
-        .cta-section::after {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
-            pointer-events: none;
+              .cta-section {
+            background-color: var(--bg-color); /* Темный фон как у сайта */
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            border: 1px solid rgba(251, 191, 36, 0.3); /* Чуть ярче рамка */
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.05); /* Очень легкое золотое свечение вокруг */
+            position: relative;
+            overflow: hidden;
+        }
         }
 
         .btn {
