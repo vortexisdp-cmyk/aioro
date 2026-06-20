@@ -94,27 +94,37 @@
             border: 1px solid rgba(251, 191, 36, 0.1);
         }
         
-        .link-item {
+                .link-item {
             color: var(--text-gold);
             text-decoration: none;
             font-weight: 500;
-            display: inline-flex; /* <-- ИЗМЕНЕНО: было flex, стало inline-flex */
+            display: inline-flex;
             align-items: center;
-            justify-content: center; /* <-- ДОБАВЛЕНО: выравнивание по центру */
+            justify-content: center;
             gap: 8px;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             padding: 10px 20px;
             border-radius: 12px;
             background: rgba(251, 191, 36, 0.05);
             border: 1px solid rgba(251, 191, 36, 0.1);
-            white-space: nowrap; /* <-- ДОБАВЛЕНО: запрет переноса текста */
+            white-space: nowrap;
+        }
+
+        /* ИСПРАВЛЕННАЯ ПОДСВЕТКА */
+        .link-item:hover {
+            color: var(--text-gold-light); /* Яркий золотой текст */
+            background: rgba(251, 191, 36, 0.1); /* Чуть более светлый фон */
+            transform: translateY(-2px);
+            border-color: var(--text-gold); /* Золотая рамка */
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.4), inset 0 0 10px rgba(251, 191, 36, 0.1); /* Внешнее и внутреннее свечение */
         }
 
         .link-item svg {
             stroke: currentColor;
-            width: 20px; /* <-- ФИКСИРОВАННАЯ ШИРИНА */
-            height: 20px; /* <-- ФИКСИРОВАННАЯ ВЫСОТА */
-            flex-shrink: 0; /* <-- ЗАПРЕТ СЖАТИЯ ИКОНКИ */
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
         }
 
         .contra-link {
