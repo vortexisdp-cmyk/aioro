@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
+ <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIORO | AI Automation & OSINT</title>
-    <!-- Мета-теги для Telegram -->
-    <meta property="og:title" content="AIORO | AI Automation & OSINT">
-    <meta property="og:description" content="Workflow design and persuasive content to grow your project.">
+
+    <title>AIORO | AI Automation, Chatbots & OSINT Architect</title>
+    <meta name="description" content="Professional AI automation, custom AI agents, chatbot development, and OSINT analytics. Architecting solutions to scale your business operations.">
+    <meta name="keywords" content="AI automation, AI agents, OSINT analysis, copywriter, chatbot development, workflow design, business process automation, AI architect">
+    <meta property="og:title" content="AIORO | AI Automation & OSINT Architect">
+    <meta property="og:description" content="Workflow design, AI agents, and OSINT insights to grow your business.">
     <meta property="og:image" content="https://vortexisdp-cmyk.github.io/ai-automatizacion/cover.png">
     <meta property="og:type" content="website">
-    
+
+    <meta name="google-site-verification" content="xgEwwYy9QlhifxK9d5Ko9ss1UyGw2yyl6KPj4YvPZ94" />
+
+    <script>
+        (function(w,d,s,u){w.counterUrl=u;var d=d.createElement(s),h=d.getElementsByTagName(s)[0];d.src=u;d.async=true;h.parentNode.insertBefore(d,h);})(window,document,'script','https://counter.dev/script.js');
+    </script>
+</head>
     <style>
         :root {
-            /* ЦВЕТА КАК В INDEX (1) - ГЛУБОКИЙ ТЕМНЫЙ */
+            /* ПРАВИЛЬНЫЙ ТЕМНЫЙ ФОН (ГЛУБОКИЙ СИНИЙ/ГРАФИТ) */
             --bg-color: #02040a;
             --card-bg: rgba(10, 15, 30, 0.8);
             --text-gold: #fbbf24;
@@ -38,17 +47,13 @@
         header { margin-bottom: 60px; position: relative; }
         
         .hero-image-container {
-            position: relative; 
-            width: 100%; 
-            max-width: 700px; /* Оптимальная ширина для ПК */
-            margin: 0 auto 40px auto;
-            border-radius: 20px; 
-            overflow: hidden; 
-            box-shadow: 0 10px 40px rgba(251, 191, 36, 0.1);
-            border: 1px solid rgba(251, 191, 36, 0.2); 
-            background-color: var(--card-bg);
+            position: relative; width: 100%; max-width: 750px; margin: 0 auto 40px auto;
+            border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.2); background-color: var(--card-bg);
         }
         .hero-image { width: 100%; height: auto; display: block; object-fit: contain; }
+
+       }
 
         /* --- ЛИПКАЯ НАВИГАЦИЯ ПО ЯЗЫКАМ --- */
         .lang-switch-wrapper {
@@ -102,10 +107,12 @@
         .service-card:hover { transform: translateY(-8px); border-color: var(--text-gold); }
         .service-card:hover::before { opacity: 1; }
         
+        /* ЗАГОЛОВКИ УСЛУГ - ЗОЛОТЫЕ */
         .service-title { font-weight: 700; font-size: 1.25rem; margin-bottom: 12px; color: var(--text-gold-light); display: flex; align-items: center; gap: 10px; }
+        /* МЕЛКИЙ ТЕКСТ - БЕЛЫЙ */
         .service-card p { color: var(--text-white); opacity: 0.9; }
 
-        /* Центрированный блок сайтов БЕЗ ИКОНОК */
+        /* Центрированный блок сайтов */
         .centered-service {
             grid-column: 1 / -1;
             max-width: 500px;
@@ -115,74 +122,33 @@
         }
         .centered-service .service-title { justify-content: center; }
 
-        /* --- КАК МЫ РАБОТАЕМ (ЗОЛОТЫЕ ИКОНКИ, КОРОТКИЕ БЛОКИ) --- */
+        /* --- КАК МЫ РАБОТАЕМ --- */
         .process-section { margin-bottom: 60px; text-align: center; }
+        /* ЗАГОЛОВОК ПРОЦЕССА - ЗОЛОТОЙ */
         .process-section h2 { color: var(--text-gold-light); margin-bottom: 40px; font-size: 2rem; }
-        
-        .process-steps { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); /* 2 колонки на десктопе */
-            gap: 20px; 
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-              .process-step {
+        .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .process-step {
             background: var(--card-bg); 
+            padding: 30px 20px; 
             border-radius: 16px; 
             border: 1px solid rgba(251, 191, 36, 0.15);
-            transition: all 0.4s ease; 
-            position: relative;
-            
-            /* ДЕЛАЕМ КВАДРАТНЫМИ */
-            aspect-ratio: 1 / 1;       /* Принудительно квадратная форма */
-            display: flex;             /* Включаем флекс для центрирования */
-            flex-direction: column;    /* Вертикальное расположение */
-            justify-content: center;   /* Центрируем по вертикали */
-            align-items: center;       /* Центрируем по горизонтали */
-            text-align: center;        /* Текст по центру */
-            padding: 20px;             /* Отступы от краев */
+            transition: all 0.4s ease; position: relative;
         }
+        .process-step:hover { transform: translateY(-5px); border-color: var(--text-gold); }
+        .step-number { font-size: 2.5rem; font-weight: 800; color: rgba(251, 191, 36, 0.15); margin-bottom: 10px; line-height: 1; }
+        /* ЗАГОЛОВКИ ШАГОВ - ЗОЛОТЫЕ */
+        .process-step h3 { color: var(--text-gold-light); font-size: 1.1rem; margin-bottom: 10px; }
+        .process-step p { color: var(--text-white); opacity: 0.9; font-size: 0.95rem; line-height: 1.5; }
 
-        .process-step:hover { 
-            transform: translateY(-5px); 
-            border-color: var(--text-gold); 
-            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.1);
-        }
-
-        /* Иконка сверху */
-        .step-icon {
-            width: 40px;               /* Чуть крупнее для квадрата */
-            height: 40px;
-            margin-bottom: 15px;
-            fill: var(--text-gold);
-            stroke: none;
-        }
-
-        /* Заголовок и текст адаптируются под центр */
-        .process-step h3 { 
-            color: var(--text-gold-light); 
-            font-size: 1.1rem; 
-            margin-bottom: 8px; 
-            margin-top: 0;
-        }
-        
-        .process-step p { 
-            color: var(--text-white); 
-            opacity: 0.9; 
-            font-size: 0.9rem; 
-            line-height: 1.4; 
-            margin: 0; 
-        }
-        .process-step p { color: var(--text-white); opacity: 0.9; font-size: 0.95rem; line-height: 1.5; margin: 0; }
-
-        /* --- CTA SECTION --- */
+        /* --- CTA SECTION (ТЕСТ-ДРАЙВ) --- */
         .cta-section {
             background-color: var(--card-bg); padding: 40px; border-radius: 20px; margin-bottom: 50px;
             border: 1px solid rgba(251, 191, 36, 0.2);
             position: relative; overflow: hidden;
         }
+        /* ЗАГОЛОВОК CTA - ЗОЛОТОЙ */
         .cta-section h3 { color: var(--text-gold-light) !important; margin-top: 0; font-size: 1.5rem; }
+        /* ОПИСАНИЕ CTA - БЕЛЫЙ */
         .cta-section p { color: var(--text-white); font-size: 1.1rem; margin-bottom: 25px; opacity: 0.9; }
         
         .btn {
@@ -205,6 +171,7 @@
         
         .link-item svg { stroke: currentColor; width: 20px; height: 20px; flex-shrink: 0; }
 
+        /* Ховер для обычных кнопок (Золото) */
         .link-item:hover {
             color: #fff !important;
             background: var(--text-gold) !important;
@@ -213,13 +180,14 @@
             box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
         }
 
+        /* CONTRA: Зеленая база + ЗОЛОТОЕ СВЕЧЕНИЕ И ОБВОДКА */
         .contra-link {
             border-color: var(--accent-green); color: var(--accent-green); background: rgba(16, 185, 129, 0.05);
         }
         .contra-link:hover {
             background-color: var(--accent-green); color: #02040a;
-            border-color: var(--text-gold) !important;
-            box-shadow: 0 0 20px rgba(251, 191, 36, 0.5), inset 0 0 10px rgba(251, 191, 36, 0.2);
+            border-color: var(--text-gold) !important; /* ЗОЛОТАЯ РАМКА */
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.5), inset 0 0 10px rgba(251, 191, 36, 0.2); /* ЗОЛОТОЕ СВЕЧЕНИЕ */
         }
 
         .lang-universal { display: inline-flex !important; }
@@ -230,15 +198,91 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Адаптивность */
-        @media (max-width: 768px) { 
-            .process-steps { grid-template-columns: 1fr; } /* На телефоне 1 колонка */
+        @media (max-width: 768px) { .process-steps { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 480px) { .process-steps { grid-template-columns: 1fr; } .services { grid-template-columns: 1fr; } }
+
+
+         /* --- ИКОНКИ В ШАГАХ ПРОЦЕССА --- */
+         .step-icon-left {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5rem;
+            opacity: 0.9;
         }
-        @media (max-width: 480px) { 
-            .services { grid-template-columns: 1fr; } 
+
+        .step-icon-right {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1.2rem;
+            opacity: 0.7;
         }
+        /* Отступы для текста, чтобы он не наезжал на иконки */
+        .process-step h3 {
+            margin-top: 35px; 
+            margin-bottom: 10px;
+        }
+        
+        .process-step p {
+            padding-right: 35px; /* Место для календаря справа */
+        }
+     
+            /* --- БОКОВОЕ СВЕЧЕНИЕ --- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: -100px;
+            width: 300px;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            right: -100px;
+            width: 300px;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+     
+        /* --- ВЕРТИКАЛЬНЫЕ ЛИНИИ --- */
+        .container::before, .container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(251, 191, 36, 0.2), transparent);
+            z-index: -1;
+        }
+        .container::before { left: -20px; }
+        .container::after { right: -20px; }
     </style>
-</head>
+</head
+    <!-- Default Statcounter code for AIORO | AI Automation & OSINT
+https://vortexisdp-cmyk.github.io/aioro/ -->
+<script type="text/javascript">
+var sc_project=13312347; 
+var sc_invisible=1; 
+var sc_security="c4a5edf8"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+Statcounter" href="https://statcounter.com/" target="_blank"><img
+class="statcounter" src="https://c.statcounter.com/13312347/0/c4a5edf8/1/"
+alt="Web Analytics Made Easy - Statcounter"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->
 <body>
 
 <div class="container">
@@ -289,98 +333,111 @@
             <div data-lang="ru"><div class="service-title">4. Управление Проектами</div><p>Организация производственных процессов, контроль сроков и координация команд.</p></div>
             <div data-lang="pt"><div class="service-title">4. Gestão de Projetos</div><p>Organização de processos produtivos, controle de prazos e coordenação de equipes.</p></div>
         </div>
-        <!-- 5. Sites (Centered, NO ICON) -->
+        <!-- 5. Sites (Centered) -->
         <div class="service-card centered-service">
-            <div data-lang="ua" class="active"><div class="service-title">Сайти-візитки & Лендінги</div><p>Швидка розробка стильних односторінкових сайтів під ваш проект або послугу.</p></div>
-            <div data-lang="en"><div class="service-title">Business Card Sites & Landing Pages</div><p>Fast development of stylish one-page websites for your project or service.</p></div>
-            <div data-lang="ru"><div class="service-title">Сайты-визитки & Лендинги</div><p>Быстрая разработка стильных одностраничных сайтов под ваш проект или услугу.</p></div>
-            <div data-lang="pt"><div class="service-title">Sites Institucionais & Landing Pages</div><p>Desenvolvimento rápido de sites de página única elegantes para seu projeto ou serviço.</p></div>
+            <div data-lang="ua" class="active"><div class="service-title">5. Сайти-візитки & Лендінги</div><p>Швидка розробка стильних односторінкових сайтів під ваш проект або послугу.</p></div>
+            <div data-lang="en"><div class="service-title">5. Business Card Sites & Landing Pages</div><p>Fast development of stylish one-page websites for your project or service.</p></div>
+            <div data-lang="ru"><div class="service-title">5. Сайты-визитки & Лендинги</div><p>Быстрая разработка стильных одностраничных сайтов под ваш проект или услугу.</p></div>
+            <div data-lang="pt"><div class="service-title">5. Sites Institucionais & Landing Pages</div><p>Desenvolvimento rápido de websites elegantes de uma página para o seu projeto ou serviço.</p></div>
         </div>
     </div>
 
-    <!-- ИСПРАВЛЕННЫЙ БЛОК ПРОЦЕССА (3 ШАГА + ЗОЛОТЫЕ ИКОНКИ) -->
-    <div class="process-section">
+      <div class="process-section">
         <h2 data-lang="ua" class="active">Як ми працюємо</h2>
         <h2 data-lang="en">How We Work</h2>
         <h2 data-lang="ru">Как мы работаем</h2>
         <h2 data-lang="pt">Como Trabalhamos</h2>
         
-        <div class="process-steps">
-            <!-- Шаг 1: Сроки (Часы) -->
+         <div class="process-steps">
+            <!-- Шаг 1: Сроки -->
             <div class="process-step" data-lang="ua" class="active">
-                <svg class="step-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/></svg>
+                <div class="step-icon-left">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+</div>
                 <h3>Термін роботи</h3>
                 <p>Від 1 до 7 днів залежно від обсягу роботи та складності.</p>
+                <div class="step-icon-right">📅</div>
             </div>
             <div class="process-step" data-lang="en">
-                <svg class="step-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/></svg>
+                <div class="step-icon-left">⏱️</div>
                 <h3>Working period</h3>
                 <p>From 1 to 7 days depending on the volume of work and complexity.</p>
+                <div class="step-icon-right">📅</div>
             </div>
             <div class="process-step" data-lang="ru">
-                <svg class="step-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/></svg>
+                <div class="step-icon-left">⏱️</div>
                 <h3>Сроки работ</h3>
                 <p>От 1 до 7 дней в зависимости от объема работы и сложности.</p>
+                <div class="step-icon-right">📅</div>
             </div>
             <div class="process-step" data-lang="pt">
-                <svg class="step-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/></svg>
+                <div class="step-icon-left">⏱️</div>
                 <h3>Prazos para o trabalho</h3>
                 <p>De 1 a 7 dias, dependendo do volume de trabalho e da complexidade.</p>
+                <div class="step-icon-right">📅</div>
             </div>
 
-            <!-- Шаг 2: Разработка (Шестеренка) -->
+            <!-- Шаг 2: Разработка -->
             <div class="process-step" data-lang="ua" class="active">
-                <svg class="step-icon" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+                <div class="step-icon-left">⏱️</div>
                 <h3>Розробка рішення</h3>
                 <p>Налаштовую процеси, пишу код або створюю продаючий контент під ваші цілі.</p>
+                <div class="step-icon-right">📅</div>
             </div>
             <div class="process-step" data-lang="en">
-                <svg class="step-icon" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+                <div class="step-icon-left">⏱️</div>
                 <h3>Solution Development</h3>
                 <p>Setting up workflows, writing code, or creating persuasive content tailored to your goals.</p>
+                <div class="step-icon-right">📅</div>
             </div>
             <div class="process-step" data-lang="ru">
-                <svg class="step-icon" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+                <div class="step-icon-left">⏱️</div>
                 <h3>Разработка решения</h3>
                 <p>Настраиваю процессы, пишу код или создаю продающий контент под ваши цели.</p>
+                <div class="step-icon-right">📅</div>
             </div>
             <div class="process-step" data-lang="pt">
-                <svg class="step-icon" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+                <div class="step-icon-left">⏱️</div>
                 <h3>Desenvolvimento da Solução</h3>
                 <p>Configurando fluxos de trabalho, escrevendo código ou criando conteúdo persuasivo sob medida.</p>
+                <div class="step-icon-right">📅</div>
             </div>
 
-            <!-- Шаг 3: Поддержка (Щит/Галочка) -->
+            <!-- Шаг 3: Поддержка -->
             <div class="process-step" data-lang="ua" class="active">
-                <svg class="step-icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                <div class="step-icon-left">⏱️</div>
                 <h3>Підтримка</h3>
                 <p>Передаю інструкції та залишаюся на зв'язку для оперативних питань.</p>
+                <div class="step-icon-right">📅</div>
             </div>
             <div class="process-step" data-lang="en">
-                <svg class="step-icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                <div class="step-icon-left">⏱️</div>
                 <h3>Support</h3>
                 <p>Providing instructions and staying in touch for any operational questions.</p>
+                <div class="step-icon-right">📅</div>
             </div>
             <div class="process-step" data-lang="ru">
-                <svg class="step-icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                <div class="step-icon-left">⏱️</div>
                 <h3>Поддержка</h3>
                 <p>Передаю инструкции и остаюсь на связи для оперативных вопросов.</p>
+                <div class="step-icon-right">📅</div>
             </div>
             <div class="process-step" data-lang="pt">
-                <svg class="step-icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                <div class="step-icon-left">⏱️</div>
                 <h3>Suporte</h3>
                 <p>Fornecendo instruções e permanecendo em contato para quaisquer dúvidas operacionais.</p>
+                <div class="step-icon-right">📅</div>
             </div>
         </div>
     </div>
 
-    <div class="cta-section">
+  <div class="cta-section">
         <div data-lang="ua" class="active"><h3>🛡️ Тест-драйв: ваша безпека</h3><p>Хочете дізнатися, що інтернет знає про вас? Напишіть «Аудит», і я зроблю швидкий ресерч вашого цифрового сліду.</p><a href="https://t.me/aioroarchitect?text=Привіт! Хочу замовити експрес-аудит" class="btn">Спробувати безкоштовно</a></div>
         <div data-lang="en"><h3>🛡️ Test Drive: Your Security</h3><p>Want to know what the internet knows about you? Text "Audit" and I'll do a quick research of your digital footprint.</p><a href="https://t.me/aioroarchitect?text=Hi! I want to order an express audit" class="btn">Try for Free</a></div>
         <div data-lang="ru"><h3>🛡️ Тест-драйв: ваша безопасность</h3><p>Хотите узнать, что интернет знает о вас? Напишите «Аудит», и я сделаю быстрый ресерч вашего цифрового следа.</p><a href="https://t.me/aioroarchitect?text=Привет! Хочу заказать экспресс-аудит" class="btn">Попробовать бесплатно</a></div>
         <div data-lang="pt"><h3>🛡️ Test Drive: Sua Segurança</h3><p>Quer saber o que a internet sabe sobre você? Envie "Auditoria" e farei uma pesquisa rápida da sua pegada digital.</p><a href="https://t.me/aioroarchitect?text=Olá! Quero solicitar uma auditoria expressa" class="btn">Experimente Grátis</a></div>
     </div>
-
+ 
     <div class="links">
         <a href="https://t.me/aioroarchitect" class="link-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-8.609 3.33c-2.068.8-4.133 1.598-5.724 2.21a405.15 405.15 0 0 1-2.849 1.09c-.42.147-.99.332-1.473.901-.728.968.193 1.798.919 2.286 1.61.516 3.275 1.029 4.654 1.472.548 1.917 1.032 3.83 1.51 5.74.166.47.508.794.907.794.31 0 .58-.15.75-.39l2.31-2.22c.26-.25.59-.25.85 0l2.31 2.22c.17.24.44.39.75.39.39 0 .74-.32.9-.79.48-1.91.96-3.82 1.51-5.74 1.38-.44 3.04-.95 4.65-1.47.73-.49 1.64-1.32.92-2.29-.48-.57-1.05-.75-1.47-.9-.97-.34-1.94-.68-2.85-1.09-1.59-.61-3.65-1.41-5.72-2.21l-8.61-3.33a2.24 2.24 0 0 0-1.02-.21z"></path></svg>
