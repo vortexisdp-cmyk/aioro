@@ -290,6 +290,17 @@
             .process-steps {
                 grid-template-columns: 1fr;
             }
+            
+            .centered-service {
+            grid-column: 1 / -1;      /* Растягиваем ячейку на всю ширину */
+            max-width: 500px;         /* Ограничиваем ширину самой карточки */
+            margin: 0 auto;           /* Центрируем блок */
+            justify-self: center;     /* !!! КЛЮЧЕВОЕ СВОЙСТВО ДЛЯ GRID !!! */
+            text-align: center;       /* Центрируем текст внутри */
+        }
+           .centered-service .service-title {
+            justify-content: center;  /* Центрируем заголовок с иконкой */
+        }
     </style>
 </head>
 <body>
