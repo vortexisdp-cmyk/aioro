@@ -131,7 +131,8 @@
         /* ЗАГОЛОВОК ПРОЦЕССА - ЗОЛОТОЙ */
         .process-section h2 { color: var(--text-gold-light); margin-bottom: 40px; font-size: 2rem; }
         .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-         .process-step {
+       
+        .process-step {
             background: var(--card-bg); 
             padding: 30px 25px; 
             border-radius: 16px; 
@@ -139,19 +140,44 @@
             transition: all 0.4s ease; 
             position: relative;
             
-            /* ВЫРАВНИВАНИЕ ПО ЦЕНТРУ */
-            text-align: center;      /* Центрируем весь текст */
-            display: flex;           /* Включаем флекс для вертикального центрирования */
-            flex-direction: column;  /* Элементы друг под другом */
-            align-items: center;     /* Центрируем иконку и текст по горизонтали */
-            justify-content: center; /* Центрируем контент по вертикали */
+            /* ИСПРАВЛЕНИЕ ВЫРАВНИВАНИЯ */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Всё строго по левому краю */
+            justify-content: flex-start;
+            height: 100%; /* Карточки в одном ряду будут одинаковой высоты */
         }
-        .process-step:hover { transform: translateY(-5px); border-color: var(--text-gold); }
-        .step-number { font-size: 2.5rem; font-weight: 800; color: rgba(251, 191, 36, 0.15); margin-bottom: 10px; line-height: 1; }
-        /* ЗАГОЛОВКИ ШАГОВ - ЗОЛОТЫЕ */
-        .process-step h3 { color: var(--text-gold-light); font-size: 1.1rem; margin-bottom: 10px; }
-        .process-step p { color: var(--text-white); opacity: 0.9; font-size: 0.95rem; line-height: 1.5; }
 
+        /* Иконка всегда сверху, не сжимается */
+        .step-icon {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 15px;
+            stroke: #d4c5a9; /* Теплое серебро */
+            fill: none;
+            stroke-width: 2px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        /* ЗОЛОТОЙ ЗАГОЛОВОК - РОВНЫЙ ОТСТУП */
+        .process-step h3 { 
+            color: var(--text-gold-light); 
+            font-size: 1.1rem; 
+            margin: 0 0 12px 0; /* Фиксированный отступ снизу до текста */
+            line-height: 1.3;
+            font-weight: 700;
+        }
+        
+        /* БЕЛЫЙ ТЕКСТ ОПИСАНИЯ */
+        .process-step p { 
+            color: var(--text-white); 
+            opacity: 0.9; 
+            font-size: 0.95rem; 
+            line-height: 1.5; 
+            margin: 0; 
+        }
         /* --- CTA SECTION (ТЕСТ-ДРАЙВ) --- */
         .cta-section {
             background-color: var(--card-bg); padding: 40px; border-radius: 20px; margin-bottom: 50px;
