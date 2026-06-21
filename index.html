@@ -55,33 +55,29 @@
 
        }
 
-              /* ЛИПКАЯ ОБОЛОЧКА ДЛЯ ЯЗЫКОВ */
+        /* --- ЛИПКАЯ НАВИГАЦИЯ ПО ЯЗЫКАМ --- */
         .lang-switch-wrapper {
-            position: sticky;      /* Включает "липкость" */
-            top: 20px;             /* Отступ от верха экрана, когда панель прилипла */
-            z-index: 1000;         /* Гарантирует, что панель будет поверх всех карточек и картинок */
-            margin-bottom: 40px;   /* Отступ до следующего блока (шапки) */
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+            margin-bottom: 40px;
             display: flex;
             justify-content: center;
         }
 
-        /* САМ ПЕРЕКЛЮЧАТЕЛЬ (для красоты и фона) */
         .lang-switch {
             display: inline-flex; 
-            background: rgba(10, 15, 30, 0.95); /* Темный полупрозрачный фон */
-            backdrop-filter: blur(10px);        /* Эффект размытия фона под панелью */
+            background: rgba(10, 15, 30, 0.95);
+            backdrop-filter: blur(10px);
             padding: 5px; 
             border-radius: 50px; 
-            border: 1px solid rgba(251, 191, 36, 0.2); /* Тонкая золотая рамка */
+            border: 1px solid rgba(251, 191, 36, 0.2);
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
         
         .lang-btn {
             background: none; border: none; cursor: pointer; color: #64748b;
             padding: 8px 16px; border-radius: 50px; transition: all 0.3s; font-size: 0.9rem;
-        }
-        .lang-btn:hover { color: var(--text-gold-light); }
-        .lang-btn.active { color: var(--bg-color); background-color: var(--text-gold); font-weight: 700; }
         }
         .lang-btn:hover { color: var(--text-gold-light); }
         .lang-btn.active { color: var(--bg-color); background-color: var(--text-gold); font-weight: 700; }
@@ -130,17 +126,8 @@
         .process-section { margin-bottom: 60px; text-align: center; }
         /* ЗАГОЛОВОК ПРОЦЕССА - ЗОЛОТОЙ */
         .process-section h2 { color: var(--text-gold-light); margin-bottom: 40px; font-size: 2rem; }
-                /* --- ИСПРАВЛЕННАЯ СЕТКА ПРОЦЕССА (УБИРАЕМ КАШУ) --- */
-        .process-steps { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); /* Ровно 2 колонки на ПК */
-            gap: 20px; 
-            max-width: 800px;
-            margin: 0 auto;
-            align-items: stretch; /* Карточки в ряду будут одинаковой высоты */
-        }
-
-        .process-step {
+        .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+         .process-step {
             background: var(--card-bg); 
             padding: 30px 25px; 
             border-radius: 16px; 
@@ -148,20 +135,19 @@
             transition: all 0.4s ease; 
             position: relative;
             
-            /* Flexbox для идеального выравнивания контента внутри */
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            height: 100%; /* Растягиваем на всю высоту ячейки сетки */
+            /* ВЫРАВНИВАНИЕ ПО ЦЕНТРУ */
+            text-align: center;      /* Центрируем весь текст */
+            display: flex;           /* Включаем флекс для вертикального центрирования */
+            flex-direction: column;  /* Элементы друг под другом */
+            align-items: center;     /* Центрируем иконку и текст по горизонтали */
+            justify-content: center; /* Центрируем контент по вертикали */
         }
-        
         .process-step:hover { transform: translateY(-5px); border-color: var(--text-gold); }
+        .step-number { font-size: 2.5rem; font-weight: 800; color: rgba(251, 191, 36, 0.15); margin-bottom: 10px; line-height: 1; }
+        /* ЗАГОЛОВКИ ШАГОВ - ЗОЛОТЫЕ */
+        .process-step h3 { color: var(--text-gold-light); font-size: 1.1rem; margin-bottom: 10px; }
+        .process-step p { color: var(--text-white); opacity: 0.9; font-size: 0.95rem; line-height: 1.5; }
 
-        /* Адаптивность: на телефоне 1 колонка */
-        @media (max-width: 768px) { 
-            .process-steps { grid-template-columns: 1fr; } 
-        }
         /* --- CTA SECTION (ТЕСТ-ДРАЙВ) --- */
         .cta-section {
             background-color: var(--card-bg); padding: 40px; border-radius: 20px; margin-bottom: 50px;
