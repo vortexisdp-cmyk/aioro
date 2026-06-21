@@ -55,29 +55,33 @@
 
        }
 
-        /* --- ЛИПКАЯ НАВИГАЦИЯ ПО ЯЗЫКАМ --- */
+              /* ЛИПКАЯ ОБОЛОЧКА ДЛЯ ЯЗЫКОВ */
         .lang-switch-wrapper {
-            position: sticky;
-            top: 20px;
-            z-index: 1000;
-            margin-bottom: 40px;
+            position: sticky;      /* Включает "липкость" */
+            top: 20px;             /* Отступ от верха экрана, когда панель прилипла */
+            z-index: 1000;         /* Гарантирует, что панель будет поверх всех карточек и картинок */
+            margin-bottom: 40px;   /* Отступ до следующего блока (шапки) */
             display: flex;
             justify-content: center;
         }
 
+        /* САМ ПЕРЕКЛЮЧАТЕЛЬ (для красоты и фона) */
         .lang-switch {
             display: inline-flex; 
-            background: rgba(10, 15, 30, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 15, 30, 0.95); /* Темный полупрозрачный фон */
+            backdrop-filter: blur(10px);        /* Эффект размытия фона под панелью */
             padding: 5px; 
             border-radius: 50px; 
-            border: 1px solid rgba(251, 191, 36, 0.2);
+            border: 1px solid rgba(251, 191, 36, 0.2); /* Тонкая золотая рамка */
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
         
         .lang-btn {
             background: none; border: none; cursor: pointer; color: #64748b;
             padding: 8px 16px; border-radius: 50px; transition: all 0.3s; font-size: 0.9rem;
+        }
+        .lang-btn:hover { color: var(--text-gold-light); }
+        .lang-btn.active { color: var(--bg-color); background-color: var(--text-gold); font-weight: 700; }
         }
         .lang-btn:hover { color: var(--text-gold-light); }
         .lang-btn.active { color: var(--bg-color); background-color: var(--text-gold); font-weight: 700; }
