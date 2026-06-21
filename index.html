@@ -240,14 +240,51 @@
             stroke-linecap: round;    /* Скругленные края линий */
             stroke-linejoin: round;   /* Скругленные углы */
         }
-        /* Отступы для текста, чтобы он не наезжал на иконки */
-        .process-step h3 {
-            margin-top: 35px; 
-            margin-bottom: 10px;
+        .process-step {
+            background: var(--card-bg); 
+            padding: 30px 25px; 
+            border-radius: 16px; 
+            border: 1px solid rgba(251, 191, 36, 0.15);
+            transition: all 0.4s ease; 
+            position: relative;
+            
+            /* ИСПРАВЛЕНИЕ ВЫРАВНИВАНИЯ */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Всё строго по левому краю */
+            justify-content: flex-start;
+            height: 100%; /* Карточки в одном ряду будут одинаковой высоты */
+        }
+
+        /* Иконка всегда сверху, не сжимается */
+        .step-icon {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 15px;
+            stroke: #d4c5a9; /* Теплое серебро */
+            fill: none;
+            stroke-width: 2px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        /* ЗОЛОТОЙ ЗАГОЛОВОК - РОВНЫЙ ОТСТУП */
+        .process-step h3 { 
+            color: var(--text-gold-light); 
+            font-size: 1.1rem; 
+            margin: 0 0 12px 0; /* Фиксированный отступ снизу до текста */
+            line-height: 1.3;
+            font-weight: 700;
         }
         
-        .process-step p {
-            padding-right: 35px; /* Место для календаря справа */
+        /* БЕЛЫЙ ТЕКСТ ОПИСАНИЯ */
+        .process-step p { 
+            color: var(--text-white); 
+            opacity: 0.9; 
+            font-size: 0.95rem; 
+            line-height: 1.5; 
+            margin: 0; 
         }
      
             /* --- БОКОВОЕ СВЕЧЕНИЕ --- */
