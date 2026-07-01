@@ -101,21 +101,25 @@
     display: block;
 }
 
-/* Hero Block - трохи компактніше */
+/* Hero Block - УЛУЧШЕН ОТСТУП */
 .hero-block {
-  background: rgba(30, 41, 59, 0.7);
-  border: 1px solid #0891b2;
-  border-radius: 1rem;
-  padding: 2rem; /* Було 3rem - зменшено */
-}        
-    
-.hero-title {
-  font-size: 1.4rem; /* Було 1.8rem - зробив менше */
-  color: #fbbf24;
-  margin-bottom: 2.5rem;
-  line-height: 1.4;
-  font-weight: 600;
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid #0891b2;
+    border-radius: 1rem;
+    padding: 3rem;
+    text-align: center;
+    margin: 0 auto 4rem;
+    max-width: 900px; /* Увеличил для баланса */
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.2);
 }
+
+    .hero-title {
+        font-size: 1.8rem;
+        color: #fbbf24;
+        margin-bottom: 2.5rem;
+        line-height: 1.4;
+        font-weight: 600;
+    }
         .hero-features {
             display: flex;
             justify-content: center;
