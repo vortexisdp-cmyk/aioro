@@ -870,13 +870,20 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
             }
         }
 
-        // Автоопределение языка при загрузке страницы
+       // Автоопределение бразильцев при загрузке страницы
         window.addEventListener('DOMContentLoaded', () => {
-            const userLang = navigator.language || navigator.userLanguage;
+            // Берем массив всех языков пользователя, чтобы точно поймать pt-BR
+            const languages = navigator.languages || [navigator.language || navigator.userLanguage];
             
-            // Если язык системы/браузера начинается с "pt" (например, pt-BR)
-            if (userLang && userLang.toLowerCase().startsWith('pt')) {
+            // Проверяем, есть ли португальский среди приоритетных языков системы
+            const isPortuguese = languages.some(lang => lang && lang.toLowerCase().startsWith('pt'));
+            
+            if (isPortuguese) {
+                // Жестко принудительно включаем португальский блок
                 switchLang('pt');
+            } else {
+                // Если не португальский, принудительно активируем дефолтный UA
+                switchLang('ua');
             }
         });
     </script>
