@@ -870,7 +870,7 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
         window.addEventListener('DOMContentLoaded', () => {
             const userLang = navigator.language || navigator.userLanguage;
             
-            // Если язык системы пользователя начинается на "pt" (португальский)
+            // Если язык системы/браузера начинается с "pt" (например, pt-BR)
             if (userLang && userLang.toLowerCase().startsWith('pt')) {
                 switchLang('pt');
             }
