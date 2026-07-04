@@ -851,6 +851,9 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
     </div>
 
    <script>
+function switchLang(lang) {
+    document.documentElement.lang = lang === 'ua' ? 'uk' : lang;
+    document.querySelectorAll('.lang-content').forEach(content => {
         function switchLang(lang) {
             document.querySelectorAll('.lang-content').forEach(content => {
                 content.classList.remove('active');
