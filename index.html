@@ -850,42 +850,34 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
         </div>
     </div>
 
-   <script>
-function switchLang(lang) {
-    document.documentElement.lang = lang === 'ua' ? 'uk' : lang;
-    document.querySelectorAll('.lang-content').forEach(content => {
-        function switchLang(lang) {
-            document.querySelectorAll('.lang-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.getElementById(lang).classList.add('active');
-            
-            // Находим все кнопки и убираем активный класс
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Переработанная логика поиска активной кнопки, чтобы автоопределение не падало на событии event
-            const activeBtn = Array.from(document.querySelectorAll('.lang-btn')).find(btn => {
-                return btn.getAttribute('onclick').includes(`'${lang}'`);
-            });
-            if (activeBtn) {
-                activeBtn.classList.add('active');
-            }
-        }
 
-         // Автоопределение языка при загрузке страницы
+<script>
+    function switchLang(lang) {
+        document.documentElement.lang = lang === 'ua' ? 'uk' : lang;
 
-        window.addEventListener('DOMContentLoaded', () => {
-
-            const userLang = navigator.language || navigator.userLanguage;
-            
-            // Если язык системы/браузера начинается с "pt" (например, pt-BR)
-
-            if (userLang && userLang.toLowerCase().startsWith('pt')) {
-        switchLang('pt');
-            }
+        document.querySelectorAll('.lang-content').forEach(content => {
+            content.classList.remove('active');
         });
-    </script>
+        document.getElementById(lang).classList.add('active');
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        const activeBtn = Array.from(document.querySelectorAll('.lang-btn')).find(btn => {
+            return btn.getAttribute('onclick').includes(`'${lang}'`);
+        });
+        if (activeBtn) {
+            activeBtn.classList.add('active');
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const userLang = navigator.language || navigator.userLanguage;
+        if (userLang && userLang.toLowerCase().startsWith('pt')) {
+            switchLang('pt');
+        }
+    });
+</script>
 </body>
 </html>
