@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- ====== SEO УЛУЧШЕНИЯ ====== -->
+    <!-- Мета-теги будут динамически обновляться скриптом в зависимости от языка -->
+    <meta name="description" content="Мої веб-проекти: сайти-візитки, портфоліо, освітні та лендінги з сучасним UX/UI. Копірайтинг, написання контенту. Пишу про кібербезпеку у Facebook та X.">
+    <meta name="keywords" content="веб-сайти, портфоліо, сайти-візитки, освітні платформи, лендінги, UX/UI, HTML, CSS, JavaScript, копірайтинг, контент, кібербезпека">
+    <meta name="author" content="Ваше Ім'я">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Мої проекти — Освіта, пошук, контент">
+    <meta property="og:description" content="Сайти-візитки, портфоліо, освітні та лендінги з сучасним UX/UI. Копірайтинг, написання контенту. Пишу про кібербезпеку у Facebook та X.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ваш-домен.ua/">
+    <link rel="canonical" href="https://ваш-домен.ua/">
+    <title>Мої проекти — Освіта, пошук, контент</title>
+    <!-- ====== /SEO УЛУЧШЕНИЯ ====== -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ====== ЦВЕТОВЫЕ ТЕМЫ ====== */
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --bg-card-hover: #2d3b54;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-primary: #3b82f6;
+            --accent-secondary: #8b5cf6;
+            --accent-tertiary: #06b6d4;
+            --accent-hover: #2563eb;
+            --accent-light: #eff6ff;
+            --accent-glow: #3b82f633;
+            --border: #334155;
+            --border-hover: #64748b;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.3);
+            --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.3);
+            --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --glow-intensity: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+        .theme-light {
+            --bg-primary: #e2e8f0; /* Более насыщенный фон */
+            --bg-secondary: #cbd5e1; /* Более насыщенный вторичный фон */
+            --bg-card: #ffffff;
+            --bg-card-hover: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #475569; /* Более насыщенный */
+            --text-muted: #94a3b8;
+            --accent-primary: #2563eb;
+            --accent-secondary: #7c3aed;
+            --accent-tertiary: #0891b2;
+            --accent-hover: #1d4ed8;
+            --accent-light: #dbeafe;
+            --accent-glow: #3b82f61a;
+            --border: #cbd5e1;
+            --border-hover: #94a3b8;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            --glow-intensity: none;
+        }
+        .theme-terracotta {
+            --bg-primary: #f0ddd0; /* Более насыщенный фон */
+            --bg-secondary: #e6c9b8; /* Более насыщенный вторичный фон */
+            --bg-card: #ffffff;
+            --bg-card-hover: #f5e8dd;
+            --text-primary: #4a2a1a;
+            --text-secondary: #6b4a3a; /* Более насыщенный */
+            --text-muted: #8b6a5a;
+            --accent-primary: #b85c3a;
+            --accent-secondary: #d97c5a;
+            --accent-tertiary: #e0a58a;
+            --accent-hover: #9a4a2f;
+            --accent-light: #f6e1d8;
+            --accent-glow: #b85c3a33;
+            --border: #e0c4b4;
+            --border-hover: #d0b09a;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            --glow-intensity: none;
+        }
+        .theme-olive {
+            --bg-primary: #d8e0d1; /* Более насыщенный фон */
+            --bg-secondary: #c8d6c1; /* Более насыщенный вторичный фон */
+            --bg-card: #ffffff;
+            --bg-card-hover: #e8f5e9;
+            --text-primary: #2c3e16;
+            --text-secondary: #4a5d23; /* Более насыщенный */
+            --text-muted: #666666;
+            --accent-primary: #4a5d23;
+            --accent-secondary: #2c3e16;
+            --accent-tertiary: #8a9f5c;
+            --accent-hover: #3a4f1a;
+            --accent-light: #e8f5e9;
+            --accent-glow: #4a5d2333;
+            --border: #c5d0b8;
+            --border-hover: #a8b89a;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            --glow-intensity: none;
+        }
+        .theme-pastel {
+            --bg-primary: #efdee8; /* Более насыщенный фон */
+            --bg-secondary: #e6d0df; /* Более насыщенный вторичный фон */
+            --bg-card: #ffffff;
+            --bg-card-hover: #f8e6f0;
+            --text-primary: #3a2e33;
+            --text-secondary: #5b3b4a; /* Более насыщенный */
+            --text-muted: #8b7b82;
+            --accent-primary: #b88fa6;
+            --accent-secondary: #d4a8c4;
+            --accent-tertiary: #e4cfe0;
+            --accent-hover: #9a758a;
+            --accent-light: #f8e6f0;
+            --accent-glow: #b88fa633;
+            --border: #e8c8d8;
+            --border-hover: #d8b8c8;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            --glow-intensity: none;
+        }
+        .clock-widget {
+            margin-top: 30px;
+            padding: 16px 24px;
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-md);
+            display: inline-block;
+            animation: fadeInUp 0.8s ease-out forwards;
+            animation-delay: 0.9s;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+        }
+        .clock-widget:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-secondary);
+        }
+        .clock-widget::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+        .clock-widget:hover::before {
+            opacity: 1;
+        }
+        .clock-face {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 1;
+        }
+        #clock-time {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: var(--accent-primary);
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+            transition: color 0.5s ease, text-shadow 0.5s ease;
+        }
+        #clock-date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+        }
+        @media (max-width: 600px) {
+            .clock-widget {
+                padding: 12px 18px;
+            }
+            #clock-time {
+                font-size: 1.8rem;
+            }
+            #clock-date {
+                font-size: 0.8rem;
+            }
+        }
+        /* Адаптация для светлых тем */
+        .theme-light #clock-time,
+        .theme-terracotta #clock-time,
+        .theme-olive #clock-time,
+        .theme-pastel #clock-time {
+            text-shadow: none;
+            color: var(--text-primary);
+        }
+        .section-title {
+          margin-top: 2rem; /* или 32px */
+        }
+        /* ====== АНІМАЦІЇ ====== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.5); }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        /* ====== ОСНОВНІ СТИЛІ ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary), #334155);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            text-align: center;
+            margin: 0;
+            padding: 60px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-x: hidden;
+            position: relative;
+            transition: background 0.5s ease;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 10% 90%, rgba(59, 130, 246, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 10%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        header {
+            margin-bottom: 70px;
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+        .main-title {
+            font-family: 'Orbitron', 'Inter', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+            animation: pulse 4s ease-in-out infinite;
+            position: relative;
+            transition: color 0.5s ease, text-shadow 0.5s ease;
+        }
+        .main-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+            border-radius: 2px;
+        }
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+        .links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 10px;
+        }
+        .link-btn {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--text-primary);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px 35px;
+            text-align: left;
+            text-decoration: none;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            height: 140px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            cursor: pointer;
+            z-index: 1;
+        }
+        .link-btn:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent-primary);
+            background: var(--bg-card-hover);
+        }
+        .link-btn:active {
+            transform: translateY(-6px);
+        }
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+            z-index: -1;
+        }
+        .link-btn:hover::before {
+            opacity: 1;
+        }
+        .link-btn .icon {
+            font-size: 2.4rem;
+            margin-right: 24px;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 16px;
+            color: var(--accent-primary);
+        }
+        .link-btn:hover .icon {
+            transform: scale(1.1) rotate(10deg);
+            background: rgba(59, 130, 246, 0.2);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+        .link-btn .text {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .link-btn .title {
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            transition: color var(--transition-fast);
+            letter-spacing: -0.2px;
+        }
+        .link-btn .subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            transition: color var(--transition-fast);
+        }
+        .link-btn:hover .title,
+        .link-btn:hover .subtitle {
+            color: #ffffff;
+        }
+        .theme-light .link-btn:hover .title,
+        .theme-light .link-btn:hover .subtitle {
+            color: var(--text-primary);
+        }
+        .category-badge {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-family: 'Inter', sans-serif;
+            z-index: 2;
+            color: white;
+        }
+        .theme-light .category-badge,
+        .theme-terracotta .category-badge,
+        .theme-olive .category-badge,
+        .theme-pastel .category-badge {
+            color: var(--text-primary);
+        }
+        /* ====== СТИЛИ ДЛЯ УКРАИНСКИХ БЕЙДЖЕЙ ====== */
+        .category-badge[data-type="Освіта"] {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+        .category-badge[data-type="Дизайн"] {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+        .category-badge[data-type="Бізнес"] {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+        }
+        .category-badge[data-type="Пошук"] {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+        .category-badge[data-type="Контент"] {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+        .category-badge[data-type="ШІ"] { /* Исправлено: ШІ */
+            background: linear-gradient(135deg, #32CD32, #dc2626);
+        }
+        .category-badge[data-type="Персона"] {
+            background: linear-gradient(135deg, #ef4444, #4F46E5);
+         }
+        .theme-light .category-badge[data-type="Освіта"] { background: #dbeafe; color: #1e40af; }
+        .theme-light .category-badge[data-type="Дизайн"] { background: #ede9fe; color: #5b21b6; }
+        .theme-light .category-badge[data-type="Бізнес"] { background: #cffafe; color: #0e7490; }
+        .theme-light .category-badge[data-type="Пошук"] { background: #d1fae5; color: #065f46; }
+        .theme-light .category-badge[data-type="Контент"] { background: #fef9e6; color: #b45309; }
+        .theme-light .category-badge[data-type="Персона"] { background: #fee2e2; color: #991b1b; }
+
+        /* ====== СТИЛИ ДЛЯ АНГЛИЙСКИХ БЕЙДЖЕЙ ====== */
+        .category-badge[data-type="Education"] {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+        .category-badge[data-type="Design"] {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+        .category-badge[data-type="Business"] {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+        }
+        .category-badge[data-type="Search"] {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+        .category-badge[data-type="Content"] {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+        .category-badge[data-type="AI"] { /* Исправлено: AI */
+            background: linear-gradient(135deg, #32CD32, #dc2626);
+        }
+        .category-badge[data-type="Personal"] {
+            background: linear-gradient(135deg, #ef4444, #4F46E5);
+         }
+        .theme-light .category-badge[data-type="Education"] { background: #dbeafe; color: #1e40af; }
+        .theme-light .category-badge[data-type="Design"] { background: #ede9fe; color: #5b21b6; }
+        .theme-light .category-badge[data-type="Business"] { background: #cffafe; color: #0e7490; }
+        .theme-light .category-badge[data-type="Search"] { background: #d1fae5; color: #065f46; }
+        .theme-light .category-badge[data-type="Content"] { background: #fef9e6; color: #b45309; }
+        .theme-light .category-badge[data-type="Personal"] { background: #fee2e2; color: #991b1b; }
+
+        footer {
+            margin-top: 100px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            line-height: 1.8;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            border-left: 4px solid var(--accent-primary);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+        }
+        footer strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .link-btn {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .link-btn:nth-child(1) { animation-delay: 0.1s; }
+        .link-btn:nth-child(2) { animation-delay: 0.2s; }
+        .link-btn:nth-child(3) { animation-delay: 0.3s; }
+        .link-btn:nth-child(4) { animation-delay: 0.4s; }
+        .link-btn:nth-child(5) { animation-delay: 0.5s; }
+        .link-btn:nth-child(6) { animation-delay: 0.6s; }
+        .link-btn:nth-child(7) { animation-delay: 0.7s; }
+        .link-btn:nth-child(8) { animation-delay: 0.8s; }
+        @media (max-width: 900px) {
+            .main-title {
+                font-size: 3rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            .links {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 24px;
+            }
+        }
+        @media (max-width: 600px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            .links {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .link-btn {
+                padding: 24px 28px;
+                height: auto;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .link-btn .icon {
+                margin-bottom: 16px;
+                align-self: flex-start;
+            }
+            .category-badge {
+                top: 12px;
+                right: 12px;
+            }
+            body {
+                padding: 40px 15px;
+            }
+            footer {
+                margin-top: 80px;
+                padding: 30px;
+                font-size: 0.95rem;
+            }
+        }
+        .link-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transition: width var(--transition-normal);
+            border-radius: 3px;
+        }
+        .link-btn:hover::after {
+            width: 100%;
+        }
+        /* ====== ПАНЕЛЬ ВИБОРУ ТЕМИ ====== */
+        .theme-selector {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .theme-selector label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 8px;
+            white-space: nowrap;
+        }
+        .theme-button {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .theme-button:hover {
+            transform: scale(1.1);
+            border-color: var(--accent-primary);
+        }
+        .theme-button.active {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+        .theme-button[data-theme="default"] {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+        .theme-button[data-theme="light"] {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+        }
+        .theme-button[data-theme="terracotta"] {
+            background: linear-gradient(135deg, #fdf6f0, #f8f0e8);
+        }
+        .theme-button[data-theme="olive"] {
+            background: linear-gradient(135deg, #f9f7f2, #f0eee8);
+        }
+        .theme-button[data-theme="pastel"] {
+            background: linear-gradient(135deg, #fffafc, #f6eaf2);
+        }
+        /* ====== СТИЛІ ДЛЯ КНОПКИ МОВИ ====== */
+        .language-switcher {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 12px 16px;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .language-switcher label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 8px;
+            white-space: nowrap;
+        }
+        .lang-button {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-weight: bold;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lang-button:hover {
+            transform: scale(1.1);
+            border-color: var(--accent-primary);
+        }
+        .lang-button.active {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+        @media (max-width: 600px) {
+            .language-switcher {
+                top: 16px;
+                right: 16px;
+                padding: 8px 12px;
+            }
+            .lang-button {
+                width: 32px;
+                height: 32px;
+                font-size: 0.7rem;
+            }
+        }
+
+        /* ====== СТИЛІ ДЛЯ СОЦІАЛЬНИХ ІКОНОК ====== */
+        .social-icons {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            text-decoration: none;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+            font-size: 1.2rem;
+        }
+        .social-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            color: var(--accent-primary);
+            border-color: var(--accent-primary);
+        }
+        .social-icon.facebook:hover {
+            color: #1877f2; /* Стандартный синий Facebook */
+            border-color: #1877f2;
+        }
+        .social-icon.twitter:hover {
+            color: #1da1f2; /* Стандартный синий Twitter/X */
+            border-color: #1da1f2;
+        }
+        @media (max-width: 600px) {
+            .social-icons {
+                top: 16px;
+                left: 16px;
+            }
+            .social-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body class="theme-default">
+    <header>
+        <div class="main-title">Моє портфоліо</div>
+        <p class="subtitle">Сайти-візитки, портфоліо, освітні та лендінги з сучасним UX/UI. Копірайтинг, написання контенту. Пишу про кібербезпеку у Facebook та X.</p>
+        <div class="clock-widget">
+            <div class="clock-face">
+                <span id="clock-time"></span>
+                <span id="clock-date"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ====== СОЦІАЛЬНІ ІКОНКИ ====== -->
+    <div class="social-icons">
+        <a href="https://www.facebook.com/sergima10/" target="_blank" rel="noopener noreferrer" class="social-icon facebook" title="Facebook">
+            <!-- Facebook Icon (Simple SVG) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12z"/></svg>
+        </a>
+        <a href="https://x.com/sergima10IO" target="_blank" rel="noopener noreferrer" class="social-icon twitter" title="X (Twitter)">
+            <!-- Twitter/X Icon (Simple SVG) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+    </div>
+    <!-- ====== /СОЦІАЛЬНІ ІКОНКИ ====== -->
+
+    <div class="links">
+        <a href="EduPro.html" class="link-btn" data-link-id="1">
+            <span class="icon">🎓</span>
+            <div class="text">
+                <span class="title">Освітні курси</span>
+                <span class="subtitle">EduPro платформа</span>
+            </div>
+            <span class="category-badge" data-type="Освіта">Освіта</span>
+        </a>
+        <a href="EduPro1.html" class="link-btn" data-link-id="2">
+            <span class="icon">📚</span>
+            <div class="text">
+                <span class="title">Освітні курси</span>
+                <span class="subtitle">EduPro розширена версія</span>
+            </div>
+            <span class="category-badge" data-type="Освіта">Освіта</span>
+        </a>
+        <a href="TechEdu.html" class="link-btn" data-link-id="3">
+            <span class="icon">💻</span>
+            <div class="text">
+                <span class="title">Освітні курси</span>
+                <span class="subtitle">TechEdu технології</span>
+            </div>
+            <span class="category-badge" data-type="Освіта">Освіта</span>
+        </a>
+        <a href="ОК.design.html" class="link-btn" data-link-id="4">
+            <span class="icon">🎨</span>
+            <div class="text">
+                <span class="title">Портфоліо</span>
+                <span class="subtitle">OK Design студія</span>
+            </div>
+            <span class="category-badge" data-type="Дизайн">Дизайн</span>
+        </a>
+        <a href="Олександр Іванов.html" class="link-btn" data-link-id="5">
+            <span class="icon">💼</span>
+            <div class="text">
+                <span class="title">Портфоліо</span>
+                <span class="subtitle">Олександр Іванов</span>
+            </div>
+            <span class="category-badge" data-type="Бізнес">Бізнес</span>
+        </a>
+        <a href="WriteSearch Pro.html" class="link-btn" data-link-id="6">
+            <span class="icon">🔍</span>
+            <div class="text">
+                <span class="title">Послуги</span>
+                <span class="subtitle">WriteSearch Pro</span>
+            </div>
+            <span class="category-badge" data-type="Пошук">Пошук</span>
+        </a>
+        <a href="WriteSearch Pro2.html" class="link-btn" data-link-id="7">
+            <span class="icon">📝</span>
+            <div class="text">
+                <span class="title">Послуги</span>
+                <span class="subtitle">WriteSearch Pro 2.0</span>
+            </div>
+            <span class="category-badge" data-type="Контент">Контент</span>
+        </a>
+        <a href="Ірина кравчук.html" class="link-btn" data-link-id="8">
+            <span class="icon">👩‍💼</span>
+            <div class="text">
+                <span class="title">Візитка</span>
+                <span class="subtitle">Ірина Кравчук</span>
+            </div>
+            <span class="category-badge" data-type="Персона">Персона</span>
+        </a>
+        <a href="landing page.html" class="link-btn" data-link-id="9">
+            <span class="icon">📱</span>
+            <div class="text">
+                <span class="title">GadgetStore</span>
+                <span class="subtitle">landing page</span>
+            </div>
+           <span class="category-badge" data-type="Персона">Персона</span>
+        </a>
+        <a href="landing_page.html" class="link-btn" data-link-id="10">
+            <span class="icon">🤖</span>
+            <div class="text">
+                <span class="title">Штучний інтелект</span>
+                <span class="subtitle">landing page</span>
+            </div>
+            <span class="category-badge" data-type="ШІ">ШІ</span> <!-- Исправлено: data-type="ШІ" -->
+        </a>
+    </div>
+    <footer>
+        <strong>Про ці проекти:</strong><br>
+        УВАГА!!! Деякі сайти у стані розробки.<br>
+        Хоча я не є професійним програмістом, маю глибокі знання в сфері HTML, CSS та вивчаю JavaScript,<br>
+        а також базові навички роботи з PHP. Готовий до співпраці та покращення проектів разом з командою.<br>
+        Конкретно програмуванням не займаюсь. Тому пишіть — домовимось про співпрацю!
+    </footer>
+
+    <!-- ====== ПАНЕЛЬ ВИБОРУ МОВИ ====== -->
+    <div class="language-switcher">
+        <label for="lang-select">Мова:</label>
+        <button class="lang-button active" data-lang="uk" title="Українська">UK</button>
+        <button class="lang-button" data-lang="en" title="English">EN</button>
+    </div>
+
+    <!-- ====== ПАНЕЛЬ ВИБОРУ ТЕМИ ====== -->
+    <div class="theme-selector">
+        <label for="theme-select">Тема:</label>
+        <button class="theme-button" data-theme="default" title="Техно-тёмная"></button>
+        <button class="theme-button" data-theme="light" title="Светлая"></button>
+        <button class="theme-button" data-theme="terracotta" title="Терракота"></button>
+        <button class="theme-button" data-theme="olive" title="Оливковая"></button>
+        <button class="theme-button" data-theme="pastel" title="Пастель"></button>
+    </div>
+
+    <script>
+        // ====== ФУНКЦИОНАЛ ПЕРЕКЛЮЧЕНИЯ ЯЗЫКА ======
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-button');
+            const mainTitle = document.querySelector('.main-title');
+            const subtitle = document.querySelector('.subtitle');
+            const footer = document.querySelector('footer');
+            const clockDateElement = document.getElementById('clock-date');
+
+            // Данные для перевода ссылок
+            const linkTranslations = {
+                1: {
+                    uk: { title: "Освітні курси", subtitle: "EduPro платформа", category: "Освіта" },
+                    en: { title: "Educational Courses", subtitle: "EduPro Platform", category: "Education" }
+                },
+                2: {
+                    uk: { title: "Освітні курси", subtitle: "EduPro розширена версія", category: "Освіта" },
+                    en: { title: "Educational Courses", subtitle: "EduPro Extended Version", category: "Education" }
+                },
+                3: {
+                    uk: { title: "Освітні курси", subtitle: "TechEdu технології", category: "Освіта" },
+                    en: { title: "Educational Courses", subtitle: "TechEdu Technologies", category: "Education" }
+                },
+                4: {
+                    uk: { title: "Портфоліо", subtitle: "OK Design студія", category: "Дизайн" },
+                    en: { title: "Portfolio", subtitle: "OK Design Studio", category: "Design" }
+                },
+                5: {
+                    uk: { title: "Портфоліо", subtitle: "Олександр Іванов", category: "Бізнес" },
+                    en: { title: "Portfolio", subtitle: "Oleksandr Ivanov", category: "Business" }
+                },
+                6: {
+                    uk: { title: "Послуги", subtitle: "WriteSearch Pro", category: "Пошук" },
+                    en: { title: "Services", subtitle: "WriteSearch Pro", category: "Search" }
+                },
+                7: {
+                    uk: { title: "Послуги", subtitle: "WriteSearch Pro 2.0", category: "Контент" },
+                    en: { title: "Services", subtitle: "WriteSearch Pro 2.0", category: "Content" }
+                },
+                8: {
+                    uk: { title: "Візитка", subtitle: "Ірина Кравчук", category: "Персона" },
+                    en: { title: "Business Card", subtitle: "Iryna Kravchuk", category: "Personal" }
+                },
+                9: {
+                    uk: { title: "GadgetStore", subtitle: "landing page", category: "Персона" },
+                    en: { title: "GadgetStore", subtitle: "landing page", category: "Personal" }
+                },
+                10: {
+                    uk: { title: "Штучний інтелект", subtitle: "landing page", category: "ШІ" }, // Исправлено: "ШІ"
+                    en: { title: "Artificial Intelligence", subtitle: "landing page", category: "AI" } // Исправлено: "AI"
+                }
+            };
+
+            // Тексты для переключения основных элементов
+            const translations = {
+                uk: {
+                    title: "Моє портфоліо",
+                    subtitle: "Сайти-візитки, портфоліо, освітні та лендінги з сучасним UX/UI. Копірайтинг, написання контенту. Пишу про кібербезпеку у Facebook та X.",
+                    footer: "<strong>Про ці проекти:</strong><br>УВАГА!!! Деякі сайти у стані розробки.<br>Хоча я не є професійним програмістом, маю глибокі знання в сфері HTML, CSS та вивчаю JavaScript,<br>а також базові навички роботи з PHP. Готовий до співпраці та покращення проектів разом з командою.<br>Конкретно програмуванням не займаюсь. Тому пишіть — домовимось про співпрацю!",
+                    clockOptions: { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' },
+                    // SEO мета-теги для украинского языка
+                    meta: {
+                        description: "Мої веб-проекти: сайти-візитки, портфоліо, освітні та лендінги з сучасним UX/UI. Копірайтинг, написання контенту. Пишу про кібербезпеку у Facebook та X.",
+                        keywords: "веб-сайти, портфоліо, сайти-візитки, освітні платформи, лендінги, UX/UI, HTML, CSS, JavaScript, копірайтинг, контент, кібербезпека",
+                        ogTitle: "Мої проекти — Освіта, пошук, контент",
+                        ogDescription: "Сайти-візитки, портфоліо, освітні та лендінги з сучасним UX/UI. Копірайтинг, написання контенту. Пишу про кібербезпеку у Facebook та X."
+                    }
+                },
+                en: {
+                    title: "My portfolio",
+                    subtitle: "Business card site, educational, landing pages and personal websites with modern UX/UI, copywriting, content writing. I write about cybersecurity on Facebook and X.",
+                    footer: "<strong>About these projects:</strong><br>ATTENTION!!! Some sites are under development.<br>Although I am not a professional programmer, I have deep knowledge in HTML, CSS and am studying JavaScript,<br>as well as basic PHP skills. Ready to cooperate and improve projects with a team.<br>I don't do programming specifically. So write - let's agree on cooperation!",
+                    clockOptions: { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' },
+                    // SEO мета-теги для английского языка
+                    meta: {
+                        description: "My web projects: business card sites, portfolio, educational and landing pages with modern UX/UI. Copywriting, content writing. I write about cybersecurity on Facebook and X.",
+                        keywords: "websites, portfolio, business card, educational platforms, landing pages, UX/UI, HTML, CSS, JavaScript, copywriting, content, cybersecurity",
+                        ogTitle: "My Projects — Education, Search, Content",
+                        ogDescription: "Business card site, educational, landing pages and personal websites with modern UX/UI, copywriting, content writing. I write about cybersecurity on Facebook and X."
+                    }
+                }
+            };
+
+            // Проверяем сохраненный язык
+            const savedLang = localStorage.getItem('selectedLanguage') || 'uk';
+
+            // Применяем сохраненный язык
+            applyLanguage(savedLang);
+
+            // Добавляем обработчики кликов
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.dataset.lang;
+
+                    // Удаляем активный класс со всех кнопок
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+
+                    // Добавляем активный класс к выбранной кнопке
+                    this.classList.add('active');
+
+                    // Применяем язык
+                    applyLanguage(lang);
+
+                    // Сохраняем выбор пользователя
+                    localStorage.setItem('selectedLanguage', lang);
+                });
+            });
+
+            function applyLanguage(lang) {
+                // Обновляем основные тексты
+                mainTitle.textContent = translations[lang].title;
+                subtitle.innerHTML = translations[lang].subtitle;
+                footer.innerHTML = translations[lang].footer;
+
+                // Обновляем атрибут lang у html тега
+                document.documentElement.lang = lang;
+
+                // Обновляем тексты в ссылках
+                document.querySelectorAll('.link-btn').forEach(link => {
+                    const linkId = link.dataset.linkId;
+                    if (linkId && linkTranslations[linkId]) {
+                        const translation = linkTranslations[linkId][lang];
+                        if (translation) {
+                            link.querySelector('.title').textContent = translation.title;
+                            link.querySelector('.subtitle').textContent = translation.subtitle;
+                            const badge = link.querySelector('.category-badge');
+                            badge.textContent = translation.category;
+                            // Исправление: обновляем data-type бейджа
+                            badge.dataset.type = translation.category;
+                        }
+                    }
+                });
+
+                // Обновляем мета-теги для SEO
+                updateMetaTags(lang);
+
+                // Обновляем часы
+                updateClock();
+
+                // === ИСПРАВЛЕНИЕ: Обновляем состояние кнопок переключения языка ===
+                // Это необходимо для корректного отображения активной кнопки при перезагрузке страницы
+                langButtons.forEach(button => {
+                    if (button.dataset.lang === lang) {
+                        button.classList.add('active');
+                    } else {
+                        button.classList.remove('active');
+                    }
+                });
+                // === КОНЕЦ ИСПРАВЛЕНИЯ ===
+            }
+
+            function updateMetaTags(lang) {
+                const metaDescription = document.querySelector('meta[name="description"]');
+                const metaKeywords = document.querySelector('meta[name="keywords"]');
+                const ogTitle = document.querySelector('meta[property="og:title"]');
+                const ogDescription = document.querySelector('meta[property="og:description"]');
+                const titleElement = document.querySelector('title');
+
+                const meta = translations[lang].meta;
+
+                titleElement.textContent = meta.ogTitle;
+                metaDescription.setAttribute('content', meta.description);
+                if (metaKeywords) { // Проверка на случай, если тег keywords отсутствует
+                     metaKeywords.setAttribute('content', meta.keywords);
+                }
+                ogTitle.setAttribute('content', meta.ogTitle);
+                ogDescription.setAttribute('content', meta.ogDescription);
+            }
+
+            // Функция для обновления часов и даты
+            function updateClock() {
+                const now = new Date();
+                const timeElement = document.getElementById('clock-time');
+                const lang = document.querySelector('.lang-button.active').dataset.lang || 'uk';
+                const options = translations[lang].clockOptions;
+
+                // Форматирование времени в 24-часовом формате с ведущими нулями
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const timeString = `${hours}:${minutes}`;
+
+                // Форматирование даты в зависимости от языка
+                let locale;
+                if (lang === 'en') {
+                    locale = 'en-US';
+                } else {
+                    locale = 'uk-UA';
+                }
+
+                const dateString = now.toLocaleDateString(locale, options);
+
+                timeElement.textContent = timeString;
+                clockDateElement.textContent = dateString;
+            }
+
+            // Запускаем обновление часов сразу и затем каждую секунду
+            updateClock();
+            setInterval(updateClock, 1000);
+        });
+
+        // ====== ФУНКЦИОНАЛ ПЕРЕКЛЮЧЕНИЯ ТЕМЫ ======
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+            const themeButtons = document.querySelectorAll('.theme-button');
+            const themeNames = {
+                'default': 'theme-default',
+                'light': 'theme-light',
+                'terracotta': 'theme-terracotta',
+                'olive': 'theme-olive',
+                'pastel': 'theme-pastel'
+            };
+
+            // Проверяем сохраненную тему
+            const savedTheme = localStorage.getItem('selectedTheme') || 'default';
+
+            // Применяем сохраненную тему
+            applyTheme(savedTheme);
+
+            // Добавляем обработчики кликов
+            themeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const theme = this.dataset.theme;
+
+                    // Удаляем активный класс со всех кнопок
+                    themeButtons.forEach(btn => btn.classList.remove('active'));
+
+                    // Добавляем активный класс к выбранной кнопке
+                    this.classList.add('active');
+
+                    // Применяем тему
+                    applyTheme(theme);
+
+                    // Сохраняем выбор пользователя
+                    localStorage.setItem('selectedTheme', theme);
+                });
+            });
+
+            function applyTheme(theme) {
+                // Удаляем все классы тем
+                Object.values(themeNames).forEach(className => {
+                    body.classList.remove(className);
+                });
+
+                // Добавляем класс выбранной темы
+                body.classList.add(themeNames[theme]);
+
+                // Обновляем фоновую анимацию для светлой темы
+                if (theme === 'light' || theme === 'terracotta' || theme === 'olive' || theme === 'pastel') {
+                    body.style.animation = 'none';
+                    document.querySelector('.main-title').style.textShadow = 'none';
+                    document.querySelector('.main-title').style.color = 'var(--text-primary)';
+                    document.querySelector('.main-title').style.animation = 'none';
+                } else {
+                    body.style.animation = 'gradientShift 15s ease infinite';
+                    document.querySelector('.main-title').style.textShadow = '0 0 20px rgba(59, 130, 246, 0.6)';
+                    document.querySelector('.main-title').style.color = '#ffffff';
+                    document.querySelector('.main-title').style.animation = 'pulse 4s ease-in-out infinite';
+                }
+
+                // Устанавливаем активный класс на кнопку
+                const activeBtn = document.querySelector(`.theme-button[data-theme="${theme}"]`);
+                if (activeBtn) {
+                    activeBtn.classList.add('active');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
