@@ -59,6 +59,9 @@
   /* ============================================
      THEME VARIABLES
      ============================================ */
+  :/* ============================================
+     THEME VARIABLES
+     ============================================ */
   :root {
     --radius-sm: 10px;
     --radius-md: 18px;
@@ -89,10 +92,7 @@
     --hero-gradient: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,0.08), transparent 60%);
     --card-shadow: 0 1px 0 rgba(255,255,255,0.05) inset, 0 8px 24px rgba(0,0,0,0.4);
     --card-shadow-hover: 0 1px 0 rgba(255,255,255,0.08) inset, 0 24px 48px rgba(0,0,0,0.6);
-    /* Тёмная тема */
-[data-theme="dark"] {
-  /* ...ваши старые переменные... */
-  --dot-dark-bg: #ffffff; /* На тёмном фоне точка станет белой и контрастной */
+    --dot-dark-bg: #ffffff; /* На тёмном фоне точка станет белой */
   }
 
   /* Terracotta Theme */
@@ -112,10 +112,7 @@
     --hero-gradient: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(198,93,58,0.12), transparent 60%);
     --card-shadow: 0 1px 0 rgba(255,255,255,0.8) inset, 0 8px 24px rgba(180,90,50,0.08);
     --card-shadow-hover: 0 1px 0 rgba(255,255,255,0.8) inset, 0 24px 48px rgba(180,90,50,0.14);
-    /* Терракотовая тема */
-[data-theme="terracotta"] {
-  /* ...ваши старые переменные... */
-  --dot-dark-bg: #111113; /* На светлом фоне точка станет тёмной, показывая цвет темы */
+    --dot-dark-bg: #111113; /* На светлом терракотовом фоне точка станет тёмной */
   }
 
   /* Olive Theme */
@@ -135,12 +132,9 @@
     --hero-gradient: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(74,90,42,0.12), transparent 60%);
     --card-shadow: 0 1px 0 rgba(255,255,255,0.8) inset, 0 8px 24px rgba(70,90,50,0.08);
     --card-shadow-hover: 0 1px 0 rgba(255,255,255,0.8) inset, 0 24px 48px rgba(70,90,50,0.14);
-    /* Оливковая тема */
-[data-theme="olive"] {
-  /* ...ваши старые переменные... */
-  --dot-dark-bg: #111113; /* Здесь тоже тёмной */
+    --dot-dark-bg: #111113; /* На светлом оливковом фоне точка станет тёмной */
   }
-
+ 
   /* ============================================
      LAYOUT
      ============================================ */
@@ -239,6 +233,7 @@
   }
 
   /* Стили для точек переключения тем */
+/* Стили для точек переключения тем */
   .theme-dot {
     display: inline-block;
     width: 12px;
@@ -247,7 +242,7 @@
     border: 1px solid var(--border-strong);
     flex-shrink: 0;
   }
-  .theme-dot-dark { background-color: var(--dot-dark-bg); }
+  .theme-dot-dark { background-color: var(--dot-dark-bg); } /* Теперь цвет управляется переменной */
   .theme-dot-terracotta { background-color: #c65d3a; }
   .theme-dot-olive { background-color: #4a5a2a; }
     
