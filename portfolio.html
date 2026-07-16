@@ -77,22 +77,23 @@
 
   /* Dark Theme */
   [data-theme="dark"] {
-    --bg: #0a0a0b;
-    --bg-elevated: #111113;
-    --surface: #161618;
-    --surface-hover: #1c1c1f;
-    --border: rgba(255, 255, 255, 0.08);
-    --border-strong: rgba(255, 255, 255, 0.14);
+    --bg: #0d1321;               /* Глубокий полночный синий вместо глухого чёрного */
+    --bg-elevated: #141d30;      /* Чуть более светлый синий для подложек */
+    --surface: #1b263b;          /* Цвет карточек */
+    --surface-hover: #24334f;    /* Цвет карточек при наведении */
+    --border: rgba(59, 130, 246, 0.12);        /* Границы с мягким синеватым отливом */
+    --border-strong: rgba(59, 130, 246, 0.25); /* Контрастные границы */
     --text: #f5f5f7;
-    --text-muted: #8e8e93;
-    --text-subtle: #636366;
-    --accent: #ffffff;
-    --accent-soft: rgba(255, 255, 255, 0.08);
-    --accent-hover: rgba(255, 255, 255, 0.14);
-    --hero-gradient: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,0.08), transparent 60%);
-    --card-shadow: 0 1px 0 rgba(255,255,255,0.05) inset, 0 8px 24px rgba(0,0,0,0.4);
-    --card-shadow-hover: 0 1px 0 rgba(255,255,255,0.08) inset, 0 24px 48px rgba(0,0,0,0.6);
-    --dot-dark-bg: #ffffff; /* На тёмном фоне точка станет белой */
+    --text-muted: #94a3b8;       /* Сине-серый приглушённый текст */
+    --text-subtle: #64748b;      /* Ещё более мягкий сине-серый текст */
+    --accent: #3b82f6;           /* Наш яркий синий акцент */
+    --accent-soft: rgba(59, 130, 246, 0.12);
+    --accent-hover: rgba(59, 130, 246, 0.2);
+    /* Сине-голубое свечение сверху страницы (как на "Базе Всего") */
+    --hero-gradient: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59, 130, 246, 0.15), transparent 60%);
+    --card-shadow: 0 1px 0 rgba(255,255,255,0.05) inset, 0 8px 24px rgba(13, 19, 33, 0.6);
+    --card-shadow-hover: 0 1px 0 rgba(255,255,255,0.08) inset, 0 24px 48px rgba(13, 19, 33, 0.8);
+    --dot-dark-bg: #3b82f6;      /* Точка выбора тёмной темы теперь тоже будет красивого синего цвета */
   }
 
   /* Terracotta Theme */
