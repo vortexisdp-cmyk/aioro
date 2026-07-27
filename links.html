@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VortexISDP - Все ссылки</title>
+    <title>VortexISDP - Links</title>
     <style>
         * {
             margin: 0;
@@ -33,7 +33,7 @@
 
         .header {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 20px;
         }
 
         .header h1 {
@@ -47,6 +47,38 @@
             font-size: 14px;
         }
 
+        /* Language Selector */
+        .lang-selector {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            background: transparent;
+            color: #667eea;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .lang-btn.active {
+            background: #667eea;
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Links */
         .links {
             display: flex;
             flex-direction: column;
@@ -105,57 +137,134 @@
             .container {
                 padding: 30px 20px;
             }
-
             .header h1 {
                 font-size: 24px;
             }
-
             .link-card {
                 padding: 15px;
             }
-
             .link-icon {
                 font-size: 28px;
+            }
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 13px;
             }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
         <div class="header">
-            <h1>VortexISDP</h1>
-            <p>Все мои проекты в одном месте</p>
+            <h1 id="header_title">VortexISDP</h1>
+            <p id="header_sub">Все мои проекты в одном месте</p>
+        </div>
+
+        <div class="lang-selector">
+            <button class="lang-btn active" id="btn_ru" onclick="setLanguage('ru')">🇷🇺 Русский</button>
+            <button class="lang-btn" id="btn_en" onclick="setLanguage('en')">🇬🇧 English</button>
+            <button class="lang-btn" id="btn_pt" onclick="setLanguage('pt')">🇧🇷 Português</button>
         </div>
 
         <div class="links">
             <a href="https://vortexisdp-cmyk.github.io/aioro/prompt_guide.html" class="link-card" target="_blank">
                 <div class="link-icon">📚</div>
                 <div class="link-content">
-                    <div class="link-title">AI Prompt Guide</div>
-                    <div class="link-description">Гайд по созданию промтов для ИИ</div>
+                    <div class="link-title" id="link1_title">AI Prompt Guide</div>
+                    <div class="link-description" id="link1_desc">Гайд по созданию промтов для ИИ</div>
                 </div>
             </a>
 
             <a href="https://vortexisdp-cmyk.github.io/osintedu/VibeAudit2.html" class="link-card" target="_blank">
                 <div class="link-icon">🔍</div>
                 <div class="link-content">
-                    <div class="link-title">Vibe Audit (EN)</div>
-                    <div class="link-description">Аудит сайта в формате самого сайта</div>
+                    <div class="link-title" id="link2_title">Vibe Audit (EN)</div>
+                    <div class="link-description" id="link2_desc">Аудит сайта в формате самого сайта</div>
                 </div>
             </a>
 
             <a href="https://vortexisdp-cmyk.github.io/osintedu/VibeAudit.html" class="link-card" target="_blank">
                 <div class="link-icon">🌐</div>
                 <div class="link-content">
-                    <div class="link-title">Vibe Audit (RU)</div>
-                    <div class="link-description">Аудит сайта на русском языке</div>
+                    <div class="link-title" id="link3_title">Vibe Audit (RU)</div>
+                    <div class="link-description" id="link3_desc">Аудит сайта на русском языке</div>
                 </div>
             </a>
         </div>
 
-        <div class="footer">
-            Made with AI & ❤️
+        <div class="footer" id="footer_text">
+            Сделано с помощью ИИ и ❤️
         </div>
     </div>
+
+    <script>
+        const translations = {
+            ru: {
+                header_title: "VortexISDP",
+                header_sub: "Все мои проекты в одном месте",
+                link1_title: "AI Prompt Guide",
+                link1_desc: "Гайд по созданию промтов для ИИ",
+                link2_title: "Vibe Audit (EN)",
+                link2_desc: "Аудит сайта в формате самого сайта",
+                link3_title: "Vibe Audit (RU)",
+                link3_desc: "Аудит сайта на русском языке",
+                footer_text: "Сделано с помощью ИИ и ❤️"
+            },
+            en: {
+                header_title: "VortexISDP",
+                header_sub: "All my projects in one place",
+                link1_title: "AI Prompt Guide",
+                link1_desc: "Guide to creating AI prompts",
+                link2_title: "Vibe Audit (EN)",
+                link2_desc: "Website audit in the format of the website itself",
+                link3_title: "Vibe Audit (RU)",
+                link3_desc: "Website audit in Russian",
+                footer_text: "Made with AI & ❤️"
+            },
+            pt: {
+                header_title: "VortexISDP",
+                header_sub: "Todos os meus projetos em um só lugar",
+                link1_title: "Guia de Prompts de IA",
+                link1_desc: "Guia para criar prompts de IA",
+                link2_title: "Vibe Audit (EN)",
+                link2_desc: "Auditoria de site no formato do próprio site",
+                link3_title: "Vibe Audit (RU)",
+                link3_desc: "Auditoria de site em russo",
+                footer_text: "Feito com IA & ❤️"
+            }
+        };
+
+        function setLanguage(lang) {
+            const t = translations[lang];
+            
+            // Update text content
+            document.getElementById('header_title').innerText = t.header_title;
+            document.getElementById('header_sub').innerText = t.header_sub;
+            document.getElementById('link1_title').innerText = t.link1_title;
+            document.getElementById('link1_desc').innerText = t.link1_desc;
+            document.getElementById('link2_title').innerText = t.link2_title;
+            document.getElementById('link2_desc').innerText = t.link2_desc;
+            document.getElementById('link3_title').innerText = t.link3_title;
+            document.getElementById('link3_desc').innerText = t.link3_desc;
+            document.getElementById('footer_text').innerText = t.footer_text;
+
+            // Update active button state
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn_' + lang).classList.add('active');
+
+            // Update HTML lang attribute for accessibility
+            document.documentElement.lang = lang;
+
+            // Save preference
+            localStorage.setItem('preferred_lang', lang);
+        }
+
+        // Load saved language or default to Russian
+        window.onload = function() {
+            const savedLang = localStorage.getItem('preferred_lang') || 'ru';
+            setLanguage(savedLang);
+        };
+    </script>
 </body>
 </html>
