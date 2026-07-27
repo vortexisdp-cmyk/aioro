@@ -198,73 +198,77 @@
         </div>
     </div>
 
-    <script>
-        const translations = {
-            ru: {
-                header_title: "VortexISDP",
-                header_sub: "Все мои проекты в одном месте",
-                link1_title: "AI Prompt Guide",
-                link1_desc: "Гайд по созданию промтов для ИИ",
-                link2_title: "Vibe Audit (EN)",
-                link2_desc: "Аудит сайта в формате самого сайта",
-                link3_title: "Vibe Audit (RU)",
-                link3_desc: "Аудит сайта на русском языке",
-                footer_text: "Сделано с помощью ИИ и ❤️"
-            },
-            en: {
-                header_title: "VortexISDP",
-                header_sub: "All my projects in one place",
-                link1_title: "AI Prompt Guide",
-                link1_desc: "Guide to creating AI prompts",
-                link2_title: "Vibe Audit (EN)",
-                link2_desc: "Website audit in the format of the website itself",
-                link3_title: "Vibe Audit (RU)",
-                link3_desc: "Website audit in Russian",
-                footer_text: "Made with AI & ❤️"
-            },
-            pt: {
-                header_title: "VortexISDP",
-                header_sub: "Todos os meus projetos em um só lugar",
-                link1_title: "Guia de Prompts de IA",
-                link1_desc: "Guia para criar prompts de IA",
-                link2_title: "Vibe Audit (EN)",
-                link2_desc: "Auditoria de site no formato do próprio site",
-                link3_title: "Vibe Audit (RU)",
-                link3_desc: "Auditoria de site em russo",
-                footer_text: "Feito com IA & ❤️"
-            }
-        };
-
-        function setLanguage(lang) {
-            const t = translations[lang];
-            
-            // Update text content
-            document.getElementById('header_title').innerText = t.header_title;
-            document.getElementById('header_sub').innerText = t.header_sub;
-            document.getElementById('link1_title').innerText = t.link1_title;
-            document.getElementById('link1_desc').innerText = t.link1_desc;
-            document.getElementById('link2_title').innerText = t.link2_title;
-            document.getElementById('link2_desc').innerText = t.link2_desc;
-            document.getElementById('link3_title').innerText = t.link3_title;
-            document.getElementById('link3_desc').innerText = t.link3_desc;
-            document.getElementById('footer_text').innerText = t.footer_text;
-
-            // Update active button state
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('btn_' + lang).classList.add('active');
-
-            // Update HTML lang attribute for accessibility
-            document.documentElement.lang = lang;
-
-            // Save preference
-            localStorage.setItem('preferred_lang', lang);
+   <script>
+    const translations = {
+        ru: {
+            header_title: "VortexISDP",
+            header_sub: "Все мои проекты в одном месте",
+            link1_title: "AI Prompt Guide",
+            link1_desc: "Гайд по созданию промтов для ИИ",
+            link2_title: "Vibe Audit (EN)",
+            link2_desc: "Аудит сайта в формате самого сайта",
+            link3_title: "Vibe Audit (RU)",
+            link3_desc: "Аудит сайта на русском языке",
+            footer_text: "Сделано с помощью ИИ и ❤️"
+        },
+        en: {
+            header_title: "VortexISDP",
+            header_sub: "All my projects in one place",
+            link1_title: "AI Prompt Guide",
+            link1_desc: "Guide to creating AI prompts",
+            link2_title: "Vibe Audit (EN)",
+            link2_desc: "Website audit in the format of the website itself",
+            link3_title: "Vibe Audit (RU)",
+            link3_desc: "Website audit in Russian",
+            footer_text: "Made with AI & ❤️"
+        },
+        pt: {
+            header_title: "VortexISDP",
+            header_sub: "Todos os meus projetos em um só lugar",
+            link1_title: "Guia de Prompts de IA",
+            link1_desc: "Guia para criar prompts de IA",
+            link2_title: "Vibe Audit (EN)",
+            link2_desc: "Auditoria de site no formato do próprio site",
+            link3_title: "Vibe Audit (RU)",
+            link3_desc: "Auditoria de site em russo",
+            footer_text: "Feito com IA & ❤️"
         }
+    };
 
-        // Load saved language or default to Russian
-        window.onload = function() {
-            const savedLang = localStorage.getItem('preferred_lang') || 'ru';
-            setLanguage(savedLang);
-        };
-    </script>
+    function setLanguage(lang) {
+        const t = translations[lang];
+        
+        document.getElementById('header_title').innerText = t.header_title;
+        document.getElementById('header_sub').innerText = t.header_sub;
+        document.getElementById('link1_title').innerText = t.link1_title;
+        document.getElementById('link1_desc').innerText = t.link1_desc;
+        document.getElementById('link2_title').innerText = t.link2_title;
+        document.getElementById('link2_desc').innerText = t.link2_desc;
+        document.getElementById('link3_title').innerText = t.link3_title;
+        document.getElementById('link3_desc').innerText = t.link3_desc;
+        document.getElementById('footer_text').innerText = t.footer_text;
+
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById('btn_' + lang).classList.add('active');
+        document.documentElement.lang = lang;
+        localStorage.setItem('preferred_lang', lang);
+    }
+
+    // Автоопределение языка браузера
+    function detectBrowserLanguage() {
+        const browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+        
+        if (browserLang.startsWith('pt')) return 'pt';      // pt, pt-BR, pt-PT
+        if (browserLang.startsWith('ru')) return 'ru';      // ru, ru-RU
+        return 'en';                                         // всё остальное → английский
+    }
+
+    window.onload = function() {
+        // Приоритет: выбор пользователя > язык браузера > английский
+        const savedLang = localStorage.getItem('preferred_lang');
+        const initialLang = savedLang || detectBrowserLanguage();
+        setLanguage(initialLang);
+    };
+</script>
 </body>
 </html>
