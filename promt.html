@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Engineering Master Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0284c7',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            },
+            accent: {
+              500: '#f59e0b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* Mobile Accessibility & Touch Target Optimizations */
+    button,
+    .lang-btn,
+    #scrollTop,
+    .mobile-menu a {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .lang-btn {
+      min-width: 44px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: all 0.2s ease;
+    }
+
+    .header-icon-btn {
+      min-width: 44px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Card Micro-interactions */
+    .card-interactive {
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s ease;
+    }
+    .card-interactive:hover {
+      transform: translateY(-3px);
+    }
+
+    /* Mobile Drawer Animations */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+    .mobile-overlay {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .mobile-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @media (max-width: 639px) {
+      header nav {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+      }
+
+      .prompt-header {
+        padding: 0.6rem 0.75rem;
+      }
+      
+      .prompt-title {
+        font-size: 0.75rem;
+        max-width: 140px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .grid-cols-2 {
+        gap: 0.75rem !important;
+      }
+      
+      .card-padding {
+        padding: 1rem !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200 selection:bg-primary-500 selection:text-white">
+
+  <!-- Fixed Navigation Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/85 dark:bg-gray-950/85 border-b border-gray-200/80 dark:border-gray-800/80 shadow-sm">
+    <nav class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5">
+      <div class="flex items-center justify-between">
+        <a href="#home" class="flex items-center gap-2 text-base sm:text-lg font-bold text-gray-900 dark:text-white group">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-primary-500 via-indigo-600 to-purple-600 text-white shadow-md shadow-primary-500/20 group-hover:scale-105 transition-transform">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </span>
+          <span class="tracking-tight font-extrabold">Prompt<span class="text-primary-600 dark:text-primary-400">Eng</span></span>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <a href="#home" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-i18n="nav.home">Главная</a>
+          <a href="#basics" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-i18n="nav.basics">Основы</a>
+          <a href="#text" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-i18n="nav.text">Текст</a>
+          <a href="#images" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-i18n="nav.images">Изображения</a>
+          <a href="#music" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-i18n="nav.music">Музыка</a>
+          <a href="#video" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-i18n="nav.video">Видео</a>
+          <a href="#practices" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-i18n="nav.practices">Практика</a>
+        </div>
+
+        <!-- Controls Block -->
+        <div class="flex items-center space-x-1.5 sm:space-x-2">
+          <div class="flex items-center bg-gray-100 dark:bg-gray-800/80 p-0.5 rounded-xl border border-gray-200/50 dark:border-gray-700/50">
+            <button onclick="setLang('ru')" class="lang-btn text-xs font-bold rounded-lg bg-white dark:bg-gray-700 shadow-sm text-primary-600 dark:text-primary-300" data-lang="ru" aria-label="Switch to Russian">RU</button>
+            <button onclick="setLang('en')" class="lang-btn text-xs font-bold rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" data-lang="en" aria-label="Switch to English">EN</button>
+            <button onclick="setLang('pt')" class="lang-btn text-xs font-bold rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" data-lang="pt" aria-label="Switch to Portuguese">PT</button>
+          </div>
+          <button onclick="toggleDark()" class="header-icon-btn rounded-xl bg-gray-100 dark:bg-gray-800/80 border border-gray-200/50 dark:border-gray-700/50 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle Theme">
+            <i data-lucide="sun" id="iconSun" class="w-5 h-5 hidden"></i>
+            <i data-lucide="moon" id="iconMoon" class="w-5 h-5"></i>
+          </button>
+          <button onclick="toggleMobileMenu()" class="header-icon-btn lg:hidden rounded-xl bg-gray-100 dark:bg-gray-800/80 border border-gray-200/50 dark:border-gray-700/50 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Open Menu">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Navigation Overlay & Drawer -->
+  <div id="mobileOverlay" onclick="toggleMobileMenu()" class="mobile-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-[60]"></div>
+  <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-full bg-white dark:bg-gray-900 z-[70] shadow-2xl p-6 border-l border-gray-200 dark:border-gray-800">
+    <div class="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-gray-800">
+      <span class="font-bold text-lg text-gray-900 dark:text-white">Навигация</span>
+      <button onclick="toggleMobileMenu()" class="header-icon-btn rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Close Menu">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+    <div class="flex flex-col space-y-3 mt-6">
+      <a href="#home" onclick="toggleMobileMenu()" class="text-base font-semibold py-2 px-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600" data-i18n="nav.home">Главная</a>
+      <a href="#basics" onclick="toggleMobileMenu()" class="text-base font-semibold py-2 px-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600" data-i18n="nav.basics">Основы</a>
+      <a href="#text" onclick="toggleMobileMenu()" class="text-base font-semibold py-2 px-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600" data-i18n="nav.text">Текст</a>
+      <a href="#images" onclick="toggleMobileMenu()" class="text-base font-semibold py-2 px-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600" data-i18n="nav.images">Изображения</a>
+      <a href="#music" onclick="toggleMobileMenu()" class="text-base font-semibold py-2 px-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600" data-i18n="nav.music">Музыка</a>
+      <a href="#video" onclick="toggleMobileMenu()" class="text-base font-semibold py-2 px-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600" data-i18n="nav.video">Видео</a>
+      <a href="#practices" onclick="toggleMobileMenu()" class="text-base font-semibold py-2 px-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600" data-i18n="nav.practices">Практика</a>
+    </div>
+  </div>
+
+  <!-- Main Content Layout -->
+  <main class="pt-20">
+
+    <!-- Hero Section -->
+    <section id="home" class="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto relative overflow-hidden">
+      <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute top-1/2 -right-24 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="text-center max-w-3xl mx-auto relative z-10">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-50 dark:bg-primary-950/80 border border-primary-200 dark:border-primary-800/80 text-primary-700 dark:text-primary-300 text-xs font-bold tracking-wide uppercase mb-6 shadow-sm">
+          <i data-lucide="zap" class="w-3.5 h-3.5 text-primary-600"></i>
+          <span data-i18n="hero.badge">ИНЖЕНЕРИЯ ПРОМПТОВ 2026</span>
+        </div>
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-gray-900 dark:text-white mb-6 leading-tight" data-i18n="hero.title">
+          Руководство по Инженерии Промптов
+        </h1>
+        <p class="text-base sm:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed max-w-2xl mx-auto font-normal" data-i18n="hero.subtitle">
+          Профессиональные техники и готовые шаблоны для текстовых, визуальных и мультимедийных нейросетей.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#basics" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-primary-600 to-indigo-600 hover:from-primary-700 hover:to-indigo-700 text-white font-bold shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 transition-all duration-200" data-i18n="hero.btn_start">
+            Начать обучение
+          </a>
+          <a href="#text" class="px-7 py-3.5 rounded-xl bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-800 dark:text-gray-200 font-bold border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200" data-i18n="hero.btn_explore">
+            Примеры промптов
+          </a>
+        </div>
+
+        <!-- Metric Badges Row -->
+        <div class="grid grid-cols-3 gap-4 mt-12 pt-8 border-t border-gray-200/80 dark:border-gray-800/80 max-w-lg mx-auto">
+          <div>
+            <div class="text-2xl sm:text-3xl font-black text-primary-600 dark:text-primary-400">50+</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 font-medium" data-i18n="hero.stat1_text">Готовых шаблонов</div>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-black text-indigo-600 dark:text-indigo-400">4</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 font-medium" data-i18n="hero.stat2_text">Мультимедиа сферы</div>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-black text-purple-600 dark:text-purple-400">100%</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 font-medium" data-i18n="hero.stat3_text">Практический подход</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Basics Section -->
+    <section id="basics" class="py-16 px-4 sm:px-6 max-w-7xl mx-auto border-t border-gray-200/80 dark:border-gray-800/80">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-extrabold text-primary-600 dark:text-primary-400 tracking-wider uppercase" data-i18n="basics.badge">БАЗОВЫЕ ПРИНЦИПЫ</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mt-2" data-i18n="basics.title">
+          Фундаментальные Правила Промптинга
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Principle 1 -->
+        <div class="card-interactive card-padding p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-sm hover:shadow-xl hover:border-primary-500/50">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/80 border border-blue-200 dark:border-blue-800/80 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-5">
+            <i data-lucide="user-check" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2" data-i18n="basics.card1.title">Назначение Роли и Контекста</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed" data-i18n="basics.card1.desc">
+            Задайте нейросети четкий системный профиль эксперта для установления нужного уровня глубины и профессиональной тональности.
+          </p>
+        </div>
+
+        <!-- Principle 2 -->
+        <div class="card-interactive card-padding p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-sm hover:shadow-xl hover:border-indigo-500/50">
+          <div class="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800/80 flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-5">
+            <i data-lucide="target" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2" data-i18n="basics.card2.title">Формат и Строгие Ограничения</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed" data-i18n="basics.card2.desc">
+            Явно указывайте требуемый формат вывода, исключайте вступления, выводы и неопределенные формулировки.
+          </p>
+        </div>
+
+        <!-- Principle 3 -->
+        <div class="card-interactive card-padding p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-sm hover:shadow-xl hover:border-purple-500/50">
+          <div class="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-950/80 border border-purple-200 dark:border-purple-800/80 flex items-center justify-center text-purple-600 dark:text-purple-400 mb-5">
+            <i data-lucide="layers" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2" data-i18n="basics.card3.title">Few-Shot & Chain-of-Thought</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed" data-i18n="basics.card3.desc">
+            Предоставляйте эталонные примеры "вход-выход" и заставляйте модель рассуждать пошагово перед выдачей финального решения.
+          </p>
+        </div>
+
+        <!-- Principle 4 -->
+        <div class="card-interactive card-padding p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-sm hover:shadow-xl hover:border-amber-500/50">
+          <div class="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-950/80 border border-amber-200 dark:border-amber-800/80 flex items-center justify-center text-amber-600 dark:text-amber-400 mb-5">
+            <i data-lucide="code-2" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2" data-i18n="basics.card4.title">Структурные Переменные</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed" data-i18n="basics.card4.desc">
+            Используйте синтаксические блоки [ПЕРЕМЕННАЯ] и теги для гибкого управления динамическим контентом.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Text Models Section (LLM) -->
+    <section id="text" class="py-16 px-4 sm:px-6 max-w-7xl mx-auto border-t border-gray-200/80 dark:border-gray-800/80">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <span class="text-xs font-extrabold text-blue-600 dark:text-blue-400 tracking-wider uppercase" data-i18n="text.badge">TEXT & LLM</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white mt-1" data-i18n="text.title">
+            Текстовые Модели (ChatGPT, Claude, Gemini)
+          </h2>
+        </div>
+      </div>
+
+      <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-sm overflow-hidden p-5 sm:p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-bold text-base sm:text-lg text-gray-900 dark:text-white" data-i18n="text.prompt1_title">SEO Копирайтинг & Контент-Маркетинг</h3>
+          <span class="px-2.5 py-1 rounded-md bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 text-xs font-bold">GPT-4o / Claude 3.5</span>
+        </div>
+        <div class="bg-gray-900 text-gray-100 rounded-xl p-4 font-mono text-xs sm:text-sm relative overflow-hidden">
+          <div class="prompt-header flex justify-between items-center mb-3 pb-2 border-b border-gray-800">
+            <span class="prompt-title text-gray-400 font-sans text-xs uppercase font-bold tracking-wider">PROMPT TEMPLATE</span>
+            <button onclick="copyText(this)" class="px-3 py-1.5 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-sans text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>Копировать</span>
+            </button>
+          </div>
+          <pre class="whitespace-pre-wrap leading-relaxed text-gray-200 font-mono">Действуй как опытный Senior SEO-копирайтер. Напиши введение к статье о преимуществах автоматизации бизнеса с использованием Make и n8n.
+
+Требования:
+1. Тон: профессиональный, убедительный, без лирических отступлений.
+2. Структура: используйте только выделенные заголовки и абзацы.
+3. Ограничения: никаких маркированных списков, приветствий и заключений.</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Images Section -->
+    <section id="images" class="py-16 px-4 sm:px-6 max-w-7xl mx-auto border-t border-gray-200/80 dark:border-gray-800/80">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <span class="text-xs font-extrabold text-purple-600 dark:text-purple-400 tracking-wider uppercase" data-i18n="images.badge">VISUAL AI</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white mt-1" data-i18n="images.title">
+            Генерация Изображений (Midjourney, SD, DALL-E)
+          </h2>
+        </div>
+      </div>
+
+      <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-sm overflow-hidden p-5 sm:p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-bold text-base sm:text-lg text-gray-900 dark:text-white" data-i18n="images.prompt1_title">Премиальный 3D CGI Рендер</h3>
+          <span class="px-2.5 py-1 rounded-md bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 text-xs font-bold">Midjourney v6</span>
+        </div>
+        <div class="bg-gray-900 text-gray-100 rounded-xl p-4 font-mono text-xs sm:text-sm relative overflow-hidden">
+          <div class="prompt-header flex justify-between items-center mb-3 pb-2 border-b border-gray-800">
+            <span class="prompt-title text-gray-400 font-sans text-xs uppercase font-bold tracking-wider">MIDJOURNEY PROMPT</span>
+            <button onclick="copyText(this)" class="px-3 py-1.5 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-sans text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>Копировать</span>
+            </button>
+          </div>
+          <pre class="whitespace-pre-wrap leading-relaxed text-purple-200 font-mono">Semi-realistic premium 3D CGI render, futuristic workspace with holographic AI interface, cinematic lighting, soft shadows, high detail, 8K, octane render, clean composition --ar 16:9 --v 6.0 --stylize 250</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" class="py-16 px-4 sm:px-6 max-w-7xl mx-auto border-t border-gray-200/80 dark:border-gray-800/80">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <span class="text-xs font-extrabold text-emerald-600 dark:text-emerald-400 tracking-wider uppercase" data-i18n="music.badge">AUDIO AI</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white mt-1" data-i18n="music.title">
+            Генерация Музыки и Звука (Suno, Udio)
+          </h2>
+        </div>
+      </div>
+
+      <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-sm overflow-hidden p-5 sm:p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-bold text-base sm:text-lg text-gray-900 dark:text-white" data-i18n="music.prompt1_title">Cyberpunk Synthwave Трэк</h3>
+          <span class="px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 text-xs font-bold">Suno v3.5</span>
+        </div>
+        <div class="bg-gray-900 text-gray-100 rounded-xl p-4 font-mono text-xs sm:text-sm relative overflow-hidden">
+          <div class="prompt-header flex justify-between items-center mb-3 pb-2 border-b border-gray-800">
+            <span class="prompt-title text-gray-400 font-sans text-xs uppercase font-bold tracking-wider">SUNO STYLE PROMPT</span>
+            <button onclick="copyText(this)" class="px-3 py-1.5 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-sans text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>Копировать</span>
+            </button>
+          </div>
+          <pre class="whitespace-pre-wrap leading-relaxed text-emerald-200 font-mono">Cyberpunk synthwave, energetic tempo, 110 bpm, heavy bassline, analog synthesizers, atmospheric pads, male vocals, driving rhythm</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="video" class="py-16 px-4 sm:px-6 max-w-7xl mx-auto border-t border-gray-200/80 dark:border-gray-800/80">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <span class="text-xs font-extrabold text-amber-600 dark:text-amber-400 tracking-wider uppercase" data-i18n="video.badge">VIDEO AI</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white mt-1" data-i18n="video.title">
+            Генерация Видео (Runway, Luma, Sora)
+          </h2>
+        </div>
+      </div>
+
+      <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-sm overflow-hidden p-5 sm:p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-bold text-base sm:text-lg text-gray-900 dark:text-white" data-i18n="video.prompt1_title">Кинематографический Пролет Камеры</h3>
+          <span class="px-2.5 py-1 rounded-md bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 text-xs font-bold">Runway Gen-3 / Luma</span>
+        </div>
+        <div class="bg-gray-900 text-gray-100 rounded-xl p-4 font-mono text-xs sm:text-sm relative overflow-hidden">
+          <div class="prompt-header flex justify-between items-center mb-3 pb-2 border-b border-gray-800">
+            <span class="prompt-title text-gray-400 font-sans text-xs uppercase font-bold tracking-wider">RUNWAY PROMPT</span>
+            <button onclick="copyText(this)" class="px-3 py-1.5 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-sans text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>Копировать</span>
+            </button>
+          </div>
+          <pre class="whitespace-pre-wrap leading-relaxed text-amber-200 font-mono">Slow motion camera pan over a neon-lit futuristic cyberpunk city at twilight, rainy reflections on asphalt, high cinematic detail, photorealistic, 4k resolution, 60fps</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Practices Section -->
+    <section id="practices" class="py-16 px-4 sm:px-6 max-w-7xl mx-auto border-t border-gray-200/80 dark:border-gray-800/80">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-extrabold text-primary-600 dark:text-primary-400 tracking-wider uppercase" data-i18n="practices.badge">BEST PRACTICES</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mt-2" data-i18n="practices.title">
+          Стратегии и Инженерные Подходы
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-sm">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-8 h-8 rounded-lg bg-primary-100 dark:bg-primary-900/50 text-primary-600 dark:text-primary-400 flex items-center justify-center font-bold text-sm">01</span>
+            <h3 class="font-bold text-lg text-gray-900 dark:text-white" data-i18n="practices.item1_title">Итеративная Отладка Промптов</h3>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed" data-i18n="practices.item1_desc">
+            Разбивайте сложные инструкции на изолированные тестовые шаги. Анализируйте ошибки вывода и последовательно добавляйте ограничение за ограничением.
+          </p>
+        </div>
+
+        <div class="p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-sm">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-8 h-8 rounded-lg bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">02</span>
+            <h3 class="font-bold text-lg text-gray-900 dark:text-white" data-i18n="practices.item2_title">Минимизация Галлюцинаций</h3>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed" data-i18n="practices.item2_desc">
+            Фиксируйте рамки осведомленности модели. Включайте явную инструкцию: "Если точная информация неизвестна, ответь прямо: Нет точной информации".
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conclusion Hero Card -->
+    <section class="py-16 px-4 sm:px-6 max-w-7xl mx-auto border-t border-gray-200/80 dark:border-gray-800/80">
+      <div class="bg-gradient-to-r from-primary-600 via-indigo-600 to-purple-600 rounded-3xl p-8 sm:p-12 text-center text-white shadow-xl relative overflow-hidden">
+        <div class="relative z-10 max-w-2xl mx-auto">
+          <h2 class="text-2xl sm:text-4xl font-extrabold mb-4" data-i18n="conclusion.title">
+            Готовы Создавать Эффективные Промпты?
+          </h2>
+          <p class="text-base sm:text-lg text-primary-100 mb-8 leading-relaxed font-normal" data-i18n="conclusion.text">
+            Используйте предоставленные шаблоны и принципы в вашей ежедневной работе с искусственным интеллектом для достижения профессиональных результатов.
+          </p>
+          <a href="#home" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-primary-700 font-bold hover:bg-gray-100 transition-colors shadow-lg">
+            <span>Вернуться наверх</span>
+            <i data-lucide="arrow-up" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200/80 dark:border-gray-800/80 bg-white dark:bg-gray-950 py-8 px-4 text-center text-sm text-gray-500">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-2 font-bold text-gray-900 dark:text-white">
+        <span class="w-6 h-6 rounded-lg bg-primary-600 text-white inline-flex items-center justify-center text-xs">P</span>
+        <span>PromptEng © 2026</span>
+      </div>
+      <div class="flex gap-6 text-xs text-gray-500 font-medium">
+        <a href="#home" class="hover:text-primary-600 transition-colors">Главная</a>
+        <a href="#basics" class="hover:text-primary-600 transition-colors">Основы</a>
+        <a href="#text" class="hover:text-primary-600 transition-colors">Промпты</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll To Top Button -->
+  <button id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="header-icon-btn fixed bottom-6 right-6 z-40 rounded-2xl bg-primary-600 text-white shadow-xl hover:bg-primary-700 transition-all duration-300 opacity-0 pointer-events-none" aria-label="Scroll to top">
+    <i data-lucide="arrow-up" class="w-5 h-5"></i>
+  </button>
+
+  <!-- Multilingual & Interactive Application Logic -->
+  <script>
+    const translations = {
+      ru: {
+        "nav.home": "Главная",
+        "nav.basics": "Основы",
+        "nav.text": "Текст",
+        "nav.images": "Изображения",
+        "nav.music": "Музыка",
+        "nav.video": "Видео",
+        "nav.practices": "Практика",
+        "hero.badge": "ИНЖЕНЕРИЯ ПРОМПТОВ 2026",
+        "hero.title": "Руководство по Инженерии Промптов",
+        "hero.subtitle": "Профессиональные техники и готовые шаблоны для текстовых, визуальных и мультимедийных нейросетей.",
+        "hero.btn_start": "Начать обучение",
+        "hero.btn_explore": "Примеры промптов",
+        "hero.stat1_text": "Готовых шаблонов",
+        "hero.stat2_text": "Мультимедиа сферы",
+        "hero.stat3_text": "Практический подход",
+        "basics.badge": "БАЗОВЫЕ ПРИНЦИПЫ",
+        "basics.title": "Фундаментальные Правила Промптинга",
+        "basics.card1.title": "Назначение Роли и Контекста",
+        "basics.card1.desc": "Задайте нейросети четкий системный профиль эксперта для установления нужного уровня глубины и профессиональной тональности.",
+        "basics.card2.title": "Формат и Строгие Ограничения",
+        "basics.card2.desc": "Явно указывайте требуемый формат вывода, исключайте вступления, выводы и неопределенные формулировки.",
+        "basics.card3.title": "Few-Shot & Chain-of-Thought",
+        "basics.card3.desc": "Предоставляйте эталонные примеры \"вход-выход\" и заставляйте модель рассуждать пошагово перед выдачей финального решения.",
+        "basics.card4.title": "Структурные Переменные",
+        "basics.card4.desc": "Используйте синтаксические блоки [ПЕРЕМЕННАЯ] и теги для гибкого управления динамическим контентом.",
+        "text.badge": "TEXT & LLM",
+        "text.title": "Текстовые Модели (ChatGPT, Claude, Gemini)",
+        "text.prompt1_title": "SEO Копирайтинг & Контент-Маркетинг",
+        "images.badge": "VISUAL AI",
+        "images.title": "Генерация Изображений (Midjourney, SD, DALL-E)",
+        "images.prompt1_title": "Премиальный 3D CGI Рендер",
+        "music.badge": "AUDIO AI",
+        "music.title": "Генерация Музыки и Звука (Suno, Udio)",
+        "music.prompt1_title": "Cyberpunk Synthwave Трэк",
+        "video.badge": "VIDEO AI",
+        "video.title": "Генерация Видео (Runway, Luma, Sora)",
+        "video.prompt1_title": "Кинематографический Пролет Камеры",
+        "practices.badge": "BEST PRACTICES",
+        "practices.title": "Стратегии и Инженерные Подходы",
+        "practices.item1_title": "Итеративная Отладка Промптов",
+        "practices.item1_desc": "Разбивайте сложные инструкции на изолированные тестовые шаги. Анализируйте ошибки вывода и последовательно добавляйте ограничение за ограничением.",
+        "practices.item2_title": "Минимизация Галлюцинаций",
+        "practices.item2_desc": "Фиксируйте рамки осведомленности модели. Включайте явную инструкцию: \"Если точная информация неизвестна, ответь прямо: Нет точной информации\".",
+        "conclusion.title": "Готовы Создавать Эффективные Промпты?",
+        "conclusion.text": "Используйте предоставленные шаблоны и принципы в вашей ежедневной работе с искусственным интеллектом для достижения профессиональных результатов."
+      },
+      en: {
+        "nav.home": "Home",
+        "nav.basics": "Basics",
+        "nav.text": "Text",
+        "nav.images": "Images",
+        "nav.music": "Music",
+        "nav.video": "Video",
+        "nav.practices": "Practices",
+        "hero.badge": "PROMPT ENGINEERING 2026",
+        "hero.title": "Prompt Engineering Master Guide",
+        "hero.subtitle": "Professional techniques and ready-to-use templates for text, visual, and multimedia AI models.",
+        "hero.btn_start": "Get Started",
+        "hero.btn_explore": "Explore Prompts",
+        "hero.stat1_text": "Ready Templates",
+        "hero.stat2_text": "Media Categories",
+        "hero.stat3_text": "Practical Approach",
+        "basics.badge": "CORE PRINCIPLES",
+        "basics.title": "Fundamental Prompting Rules",
+        "basics.card1.title": "Role & Context Assignment",
+        "basics.card1.desc": "Define a clear expert profile to establish the required depth and professional tone.",
+        "basics.card2.title": "Format & Strict Constraints",
+        "basics.card2.desc": "Explicitly specify output format and remove greetings, conclusions, or vague phrasing.",
+        "basics.card3.title": "Few-Shot & Chain-of-Thought",
+        "basics.card3.desc": "Provide input-output examples and guide the model to reason step-by-step.",
+        "basics.card4.title": "Structural Variables",
+        "basics.card4.desc": "Use placeholder tags [VARIABLE] and syntax blocks for flexible dynamic content control.",
+        "text.badge": "TEXT & LLM",
+        "text.title": "Text Models (ChatGPT, Claude, Gemini)",
+        "text.prompt1_title": "SEO Copywriting & Content Marketing",
+        "images.badge": "VISUAL AI",
+        "images.title": "Image Generation (Midjourney, SD, DALL-E)",
+        "images.prompt1_title": "Premium 3D CGI Render",
+        "music.badge": "AUDIO AI",
+        "music.title": "Music & Audio Generation (Suno, Udio)",
+        "music.prompt1_title": "Cyberpunk Synthwave Track",
+        "video.badge": "VIDEO AI",
+        "video.title": "Video Generation (Runway, Luma, Sora)",
+        "video.prompt1_title": "Cinematic Camera Movement",
+        "practices.badge": "BEST PRACTICES",
+        "practices.title": "Strategies & Engineering Approaches",
+        "practices.item1_title": "Iterative Prompt Refinement",
+        "practices.item1_desc": "Break complex instructions into testable steps. Analyze output errors and add constraints incrementally.",
+        "practices.item2_title": "Minimizing Hallucinations",
+        "practices.item2_desc": "Fix the bounds of model awareness. Include explicit instructions: 'If exact information is unknown, state directly: No exact information'.",
+        "conclusion.title": "Ready to Build Effective Prompts?",
+        "conclusion.text": "Use the provided templates and principles in your daily AI workflow to achieve professional results."
+      },
+      pt: {
+        "nav.home": "Início",
+        "nav.basics": "Básico",
+        "nav.text": "Texto",
+        "nav.images": "Imagens",
+        "nav.music": "Música",
+        "nav.video": "Vídeo",
+        "nav.practices": "Práticas",
+        "hero.badge": "ENGENHARIA DE PROMPTS 2026",
+        "hero.title": "Guia Mestre de Engenharia de Prompts",
+        "hero.subtitle": "Técnicas profissionais e modelos prontos para redes neurais de texto, imagem e multimídia.",
+        "hero.btn_start": "Começar",
+        "hero.btn_explore": "Explorar Prompts",
+        "hero.stat1_text": "Modelos Prontos",
+        "hero.stat2_text": "Categorias de Mídia",
+        "hero.stat3_text": "Abordagem Prática",
+        "basics.badge": "PRINCÍPIOS BÁSICOS",
+        "basics.title": "Regras Fundamentais de Prompts",
+        "basics.card1.title": "Atribuição de Papel e Contexto",
+        "basics.card1.desc": "Defina um perfil de especialista claro para estabelecer o nível de profundidade e tom.",
+        "basics.card2.title": "Formato e Restrições Estritas",
+        "basics.card2.desc": "Especifique explicitamente o formato de saída, excluindo saudações e conclusões.",
+        "basics.card3.title": "Few-Shot e Chain-of-Thought",
+        "basics.card3.desc": "Forneça exemplos de entrada e saída e oriente o modelo a raciocinar passo a passo.",
+        "basics.card4.title": "Variáveis Estruturais",
+        "basics.card4.desc": "Use tags [VARIÁVEL] e blocos sintáticos para controle flexível de conteúdo.",
+        "text.badge": "TEXTO E LLM",
+        "text.title": "Modelos de Texto (ChatGPT, Claude, Gemini)",
+        "text.prompt1_title": "Copywriting SEO e Marketing de Conteúdo",
+        "images.badge": "IA VISUAL",
+        "images.title": "Geração de Imagens (Midjourney, SD, DALL-E)",
+        "images.prompt1_title": "Render 3D CGI Premium",
+        "music.badge": "ÁUDIO E MÚSICA",
+        "music.title": "Geração de Música e Áudio (Suno, Udio)",
+        "music.prompt1_title": "Faixa Cyberpunk Synthwave",
+        "video.badge": "VÍDEO E ANIMAÇÃO",
+        "video.title": "Geração de Vídeo (Runway, Luma, Sora)",
+        "video.prompt1_title": "Movimento Cinematográfico de Câmera",
+        "practices.badge": "MELHORES PRÁTICAS",
+        "practices.title": "Estratégias e Abordagens de Engenharia",
+        "practices.item1_title": "Refinamento Iterativo de Prompts",
+        "practices.item1_desc": "Divida instruções complexas em etapas testáveis. Analise erros de saída e adicione restrições de forma incremental.",
+        "practices.item2_title": "Minimizando Alucinações",
+        "practices.item2_desc": "Defina os limites de conhecimento do modelo. Inclua a instrução explícita: 'Se a informação exata for desconhecida, responda diretamente: Sem informação exata'.",
+        "conclusion.title": "Pronto para Criar Prompts Eficazes?",
+        "conclusion.text": "Use os modelos e princípios fornecidos em seu trabalho diário com IA para obter resultados profissionais."
+      }
+    };
+
+    let currentLang = 'ru';
+
+    function setLang(lang) {
+      if (!translations[lang]) return;
+      currentLang = lang;
+      
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        if (btn.getAttribute('data-lang') === lang) {
+          btn.className = 'lang-btn text-xs font-bold rounded-lg bg-white dark:bg-gray-700 shadow-sm text-primary-600 dark:text-primary-300';
+        } else {
+          btn.className = 'lang-btn text-xs font-bold rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white';
+        }
+      });
+
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      document.documentElement.lang = lang;
+    }
+
+    function toggleDark() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      document.getElementById('iconSun').classList.toggle('hidden', !isDark);
+      document.getElementById('iconMoon').classList.toggle('hidden', isDark);
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      document.getElementById('iconSun')?.classList.remove('hidden');
+      document.getElementById('iconMoon')?.classList.add('hidden');
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('mobileOverlay');
+      menu.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+
+    function copyText(button) {
+      const container = button.closest('.bg-gray-900');
+      const pre = container ? container.querySelector('pre') : null;
+      if (pre) {
+        navigator.clipboard.writeText(pre.textContent).then(() => {
+          const span = button.querySelector('span');
+          const originalText = span ? span.textContent : '';
+          if (span) span.textContent = 'Скопировано!';
+          button.classList.replace('bg-primary-600', 'bg-emerald-600');
+          button.classList.replace('hover:bg-primary-700', 'hover:bg-emerald-700');
+          setTimeout(() => {
+            if (span) span.textContent = originalText;
+            button.classList.replace('bg-emerald-600', 'bg-primary-600');
+            button.classList.replace('hover:bg-emerald-700', 'hover:bg-primary-700');
+          }, 2000);
+        });
+      }
+    }
+
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('scrollTop');
+      if (window.scrollY > 300) {
+        btn.classList.remove('opacity-0', 'pointer-events-none');
+        btn.classList.add('opacity-100');
+      } else {
+        btn.classList.add('opacity-0', 'pointer-events-none');
+        btn.classList.remove('opacity-100');
+      }
+    });
+
+    lucide.createIcons();
+  </script>
+</body>
+</html>
